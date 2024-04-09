@@ -6,9 +6,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class SignUp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Timer timer = new Timer();
+
         Scanner sc = new Scanner(System.in);
         boolean WrongNum = true;
 
@@ -78,24 +81,16 @@ public class SignUp {
                     System.out.println("번호를 잘못 입력하였습니다.");
                     System.out.println("3초 뒤에 처음 화면으로 돌아갑니다.");
                     System.out.println("================================");
-                    System.out.println("");
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println();
+                    Delay.countdelay(3000);
                 }
 
             }catch (NumberFormatException e){
                 System.out.println("숫자를 입력해주세요.");
                 System.out.println("3초 뒤에 처음 화면으로 돌아갑니다.");
                 System.out.println("================================");
-                System.out.println("");
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
+                System.out.println();
+                Delay.countdelay(3000);
             }
         }
 
