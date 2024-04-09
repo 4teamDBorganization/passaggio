@@ -1,7 +1,7 @@
 package com.passaggio.project.signup;
 
-public class Timer {
-    public static void wait(int waitseconds) {
+public class Delay {
+    public static void countdelay(int waitseconds) {
         try {
             Thread.sleep(waitseconds);
         } catch (InterruptedException e) {
