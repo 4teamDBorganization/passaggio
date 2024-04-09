@@ -24,10 +24,11 @@ public class SignUp {
             System.out.println("2. 아니요(회원가입으로 이동됩니다.)");
             System.out.println("================================");
             System.out.print("--> ");
-            String loginNumString = sc.next();          // 숫자 입력 시에 오류가 나지 않게 하기 위해서 일부러 입력을 String으로 받음
+            //String loginNumString = sc.next();          // 숫자 입력 시에 오류가 나지 않게 하기 위해서 일부러 입력을 String으로 받음
+            int loginNum = sc.nextInt();
 
             try{
-                int loginNum = Integer.parseInt(loginNumString);        //String을 숫자로 변환함
+                //int loginNum = Integer.parseInt(loginNumString);        //String을 숫자로 변환함
 
                 if (loginNum == 1) {
                     //여기에 로그인 기능 구현
@@ -75,7 +76,7 @@ public class SignUp {
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        sc.close();
+
                     }
                 } else {
                     System.out.println("번호를 잘못 입력하였습니다.");
