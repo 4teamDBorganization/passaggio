@@ -20,10 +20,10 @@ public class DatabaseConnection {
             Class.forName(driver);
 
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("db연결성공");
+            System.out.println("db에 정보가 저장되었습니다.");
 
         } catch (Exception e) {
-            System.out.println("db연결실패");
+            System.out.println("db에 정보 저장 실패하였습니다");
             e.printStackTrace();
         }
         return conn;
