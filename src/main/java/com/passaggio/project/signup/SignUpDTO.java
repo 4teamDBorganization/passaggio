@@ -4,16 +4,27 @@ public class SignUpDTO {
     private int seq;            //회원번호
     private String id;          //회원아이디
     private String pwd;         //회원비밀번호
+    private String nick;
     private char gender;        //성별
 
     public SignUpDTO() {
     }
 
-    public SignUpDTO(int seq, String id, String pwd, char gender) {
+
+    public SignUpDTO(int seq, String id, String pwd, String nick, char gender) {
         this.seq = seq;
         this.id = id;
         this.pwd = pwd;
+        this.nick = nick;
         this.gender = gender;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     public int getSeq() {
@@ -54,6 +65,7 @@ public class SignUpDTO {
                 "회원번호 : " + seq +
                 ", 회원아이디 : '" + id + '\'' +
                 ", 회원비밀번호 : '" + pwd + '\'' +
+                ", 회원닉네임 : '" + nick + '\'' +
                 ", 성별 : " + gender;
     }
 }

@@ -50,20 +50,24 @@ public class SignUp {
                         System.out.print("비밀번호를 입력해주세요: ");
                         String pwd = sc.nextLine();
 
+                        System.out.print("닉네임을 입력해주세요: ");
+                        String nick = sc.nextLine();
+
                         System.out.print("성별(M/F)을 입력해주세요: ");
                         char gender = sc.next().charAt(0);
 
-                        SignUpDTO signUpDTO = new SignUpDTO(seq, id, pwd, gender);      //signup객체생성
+                        SignUpDTO signUpDTO = new SignUpDTO(seq, id, pwd, nick, gender);      //signup객체생성
 
                         // 데이터베이스 연결
                         try (Connection conn = DatabaseConnection.getConnection()) {
-                            String sql = "INSERT INTO member (seq, id, pwd, gender) VALUES (?, ?, ?, ?)";
+                            String sql = "INSERT INTO member (seq, id, pwd, nick, gender) VALUES (?, ?, ?, ?, ?)";
 
                             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                                 pstmt.setInt(1, signUpDTO.getSeq());                            // ? 1번
                                 pstmt.setString(2, signUpDTO.getId());                          // ? 2번
                                 pstmt.setString(3, signUpDTO.getPwd());                         // ? 3번
-                                pstmt.setString(4, String.valueOf(signUpDTO.getGender()));      // ? 4번
+                                pstmt.setString(4, signUpDTO.getNick());                         // ? 4번
+                                pstmt.setString(5, String.valueOf(signUpDTO.getGender()));      // ? 5번
 
                                 int result = pstmt.executeUpdate();
                                 if (result > 0) {
