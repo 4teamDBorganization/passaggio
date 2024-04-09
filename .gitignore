@@ -41,3 +41,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+## properties ###
+src/main/java/com/passaggio/project/config/
