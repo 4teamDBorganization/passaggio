@@ -35,7 +35,7 @@ public class Application {
                 System.out.println("회원 가입을 시작합니다.");
                 Map<String, String> signUpInfo = SignUp.inputMenu();
                 signUpController.registerSignUp(signUpInfo);
-                System.out.println("회원 가입이 완료되었습니다.");
+//                System.out.println("회원 가입이 완료되었습니다.");
             }else if (choose == 3){
                 System.out.println("프로그램을 종료합니다.");
                 break;

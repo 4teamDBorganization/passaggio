@@ -27,4 +27,7 @@
         , #{ gender }
         )
     </insert>
+    <select id="whatIsId" resultType="String">
+        SELECT id FROM member WHERE id = #{ id }
+    </select>
 </mapper>

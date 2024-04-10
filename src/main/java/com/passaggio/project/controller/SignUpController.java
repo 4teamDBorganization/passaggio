@@ -16,11 +16,19 @@ public class SignUpController {
 
     }
 
+    public boolean checkIdDuplicate(String userId) {
+        return signUpService.isIdAlreadyInUse(userId);
+    }
+
 
     public void registerSignUp(Map<String, String> parameter) {
 
         int userCode = Integer.parseInt(parameter.get("userCode"));
         String userId = parameter.get("userId");
+        if (checkIdDuplicate(userId)) {
+            System.out.println("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+            return;
+        }
         String userPwd = parameter.get("userPwd");
         String userNickName = parameter.get("userNickName");
         char userGender = parameter.get("userGender").charAt(0);
@@ -33,5 +41,7 @@ public class SignUpController {
         signUpDTO.setGender(userGender);
 
         signUpService.registerUser(signUpDTO);
+
+        System.out.println("회원가입이 완료되었습니다.");
     }
 }
