@@ -6,4 +6,6 @@ public interface LoginMapper {
     void insertUser(SignUpDTO signUpDTO);
 
     String whatIsId(String id);
+
+    SignUpDTO gologin(SignUpDTO signUpDTO);
 }

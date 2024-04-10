@@ -1,5 +1,6 @@
 package com.passaggio.project.Application;
 
+import com.passaggio.project.controller.LoginController;
 import com.passaggio.project.controller.SignUpController;
 import com.passaggio.project.view.login.Login;
 import com.passaggio.project.view.signup.SignUp;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
 
+        LoginController loginController = new LoginController();
         SignUpController signUpController = new SignUpController();
 
         Scanner sc = new Scanner(System.in);
@@ -29,7 +31,8 @@ public class Application {
 
             if (choose == 1) {
                 Login loginService = new Login();
-                loginService.login();
+                Map<String, String> loginInfo = loginService.inputMenu();
+                loginController.goLogin(loginInfo);
 
             } else if (choose == 2) {
                 System.out.println("회원 가입을 시작합니다.");

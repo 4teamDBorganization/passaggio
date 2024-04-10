@@ -27,7 +27,13 @@
         , #{ gender }
         )
     </insert>
+    <!--중복 체크 sql-->
     <select id="whatIsId" resultType="String">
         SELECT id FROM member WHERE id = #{ id }
     </select>
+    <!--login sql-->
+    <select id="gologin" resultMap="signUpResultMap">
+        SELECT * FROM member WHERE id = #{ id } AND pwd = #{ pwd }
+    </select>
+
 </mapper>
