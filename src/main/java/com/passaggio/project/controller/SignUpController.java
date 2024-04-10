@@ -27,7 +27,10 @@ public class SignUpController {
         int userCode = Integer.parseInt(parameter.get("userCode"));
         String userId = parameter.get("userId");
         if (checkIdDuplicate(userId)) {
+            System.out.println("================================");
             System.out.println("이미 사용 중인 아이디입니다. 다른 아이디를 입력해주세요.");
+            System.out.println("================================");
+            Delay.countdelay(1000);
             return;
         }
         String userPwd = parameter.get("userPwd");
