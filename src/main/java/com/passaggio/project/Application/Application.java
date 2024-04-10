@@ -9,6 +9,8 @@ import com.passaggio.project.view.signup.SignUp;
 import java.util.Map;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -44,7 +46,7 @@ public class Application {
 //                System.out.println("회원 가입이 완료되었습니다.");
             }else if (choose == 3){
                 System.out.println("프로그램을 종료합니다.");
-                break;
+                exit(0);
             }
         }
         mypageService.showMypage();
