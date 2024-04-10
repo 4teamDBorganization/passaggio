@@ -19,30 +19,30 @@ import java.util.Scanner;
             System.out.print("비밀번호를 입력하세요: ");
             String pwd = sc.nextLine();
 
-            try (Connection conn = DatabaseConnection.getConnection()) {
-                String sql = "SELECT * FROM member WHERE id = ?";
-                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                    pstmt.setString(1, id);
-
-                    try (ResultSet rs = pstmt.executeQuery()) {
-                        if (rs.next()) {
-                            String storedPwd = rs.getString("pwd");
-                            if (storedPwd.equals(pwd)) {
-                                System.out.println("로그인이 되었습니다.");
-                                // 로그인 성공 후 마이페이지로 이동
-                                MypageService mypageService = new MypageService();
-                                mypageService.showMypage();
-                            } else {
-                                System.out.println("비밀번호가 잘못되었습니다.");
-                            }
-                        } else {
-                            System.out.println("아이디가 잘못되었습니다.");
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try (Connection conn = DatabaseConnection.getConnection()) {
+//                String sql = "SELECT * FROM member WHERE id = ?";
+//                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//                    pstmt.setString(1, id);
+//
+//                    try (ResultSet rs = pstmt.executeQuery()) {
+//                        if (rs.next()) {
+//                            String storedPwd = rs.getString("pwd");
+//                            if (storedPwd.equals(pwd)) {
+//                                System.out.println("로그인이 되었습니다.");
+//                                // 로그인 성공 후 마이페이지로 이동
+//                                MypageService mypageService = new MypageService();
+//                                mypageService.showMypage();
+//                            } else {
+//                                System.out.println("비밀번호가 잘못되었습니다.");
+//                            }
+//                        } else {
+//                            System.out.println("아이디가 잘못되었습니다.");
+//                        }
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
