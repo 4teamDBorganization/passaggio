@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.passaggio.project.mapper.LoginMapper">
+
+    <resultMap id="signUpResultMap" type="com.passaggio.project.models.signup.SignUpDTO">
+        <id property="userCode" column="seq"/>
+        <result property="userId" column="id"/>
+        <result property="userPwd" column="pwd"/>
+        <result property="userNickName" column="nick"/>
+        <result property="userGender" column="gender"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="com.passaggio.project.models.signup.SignUpDTO">
+        INSERT INTO member (
+                             seq
+                           , id
+                           , pwd
+                           , nick
+                           , gender
+        )
+        VALUES (
+        #{ userCode }
+        , #{ userId }
+        , #{ userPwd }
+        , #{ userNickName }
+        , #{ userGender }
+        )
+    </insert>
+</mapper>
