@@ -10,14 +10,6 @@ import java.util.Scanner;
 import java.util.Timer;
 
 public class SignUp {
-    /*public static void userCheck() {
-        SignUpController signUpController = new SignUpController();
-
-        Scanner sc = new Scanner(System.in);
-        Timer timer = new Timer();
-        int loginNum = sc.nextInt();
-
-    }*/
 
     public static Map<String, String> inputMenu(){
         Scanner sc = new Scanner(System.in);
