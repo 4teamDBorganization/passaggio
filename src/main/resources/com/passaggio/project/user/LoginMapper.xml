@@ -5,11 +5,11 @@
 <mapper namespace="com.passaggio.project.mapper.LoginMapper">
 
     <resultMap id="signUpResultMap" type="com.passaggio.project.models.signup.SignUpDTO">
-        <id property="userCode" column="seq"/>
-        <result property="userId" column="id"/>
-        <result property="userPwd" column="pwd"/>
-        <result property="userNickName" column="nick"/>
-        <result property="userGender" column="gender"/>
+        <id property="seq" column="seq"/>
+        <result property="id" column="id"/>
+        <result property="pwd" column="pwd"/>
+        <result property="nick" column="nick"/>
+        <result property="gender" column="gender"/>
     </resultMap>
     <insert id="insertUser" parameterType="com.passaggio.project.models.signup.SignUpDTO">
         INSERT INTO member (
@@ -20,11 +20,11 @@
                            , gender
         )
         VALUES (
-        #{ userCode }
-        , #{ userId }
-        , #{ userPwd }
-        , #{ userNickName }
-        , #{ userGender }
+        #{ seq }
+        , #{ id }
+        , #{ pwd }
+        , #{ nick }
+        , #{ gender }
         )
     </insert>
 </mapper>
