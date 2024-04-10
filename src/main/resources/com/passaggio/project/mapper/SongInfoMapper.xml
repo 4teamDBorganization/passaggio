@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.passaggio.project.mapper.SongInfoMapper">
+    <insert id="insertSongInfo" parameterType="SongInfoTO" useGeneratedKeys="true" keyProperty="sseq">
+        INSERT INTO
+            song_info (seq, singer, title, link, exp)
+        VALUES
+            (null, #{singer}, #{title}, #{link} #{exp)
+    </insert>
+</mapper>

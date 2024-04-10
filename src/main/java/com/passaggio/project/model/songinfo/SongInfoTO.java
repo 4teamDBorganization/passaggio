@@ -1,4 +1,4 @@
-package com.passaggio.project.model.songInfo;
+package com.passaggio.project.model.songinfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
