@@ -1,7 +1,7 @@
 ---
 name: "⚡Feature issue template"
 about: 기능 추가/삭제/수정
-title: "[Feat(FeatName)] Title"
+title: "[Feature/featureName] Title"
 labels: "⚡Feature"
 assignees: ''
 
