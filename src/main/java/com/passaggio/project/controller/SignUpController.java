@@ -24,8 +24,12 @@ public class SignUpController {
 
     public void registerSignUp(Map<String, String> parameter) {
 
+
 //        int userCode = Integer.parseInt(parameter.get("userCode"));
        //아이디 중복 확인
+
+        int userCode = Integer.parseInt(parameter.get("userCode"));
+
         String userId = parameter.get("userId");
         if (checkIdDuplicate(userId)) {
             System.out.println("================================");
@@ -35,16 +39,13 @@ public class SignUpController {
             return;
         }
 
-        //닉네임 중복 확인
-
-
-
         String userPwd = parameter.get("userPwd");
         String userNickName = parameter.get("userNickName");
         char userGender = parameter.get("userGender").charAt(0);
 
         SignUpDTO signUpDTO = new SignUpDTO();
-//        signUpDTO.setSeq(userCode);
+
+        signUpDTO.setSeq(userCode);
         signUpDTO.setId(userId);
         signUpDTO.setPwd(userPwd);
         signUpDTO.setNick(userNickName);
