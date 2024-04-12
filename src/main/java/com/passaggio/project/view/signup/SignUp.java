@@ -13,10 +13,15 @@ public class SignUp {
 
     public static Map<String, String> inputMenu(){
         Scanner sc = new Scanner(System.in);
+
+//        System.out.print("회원번호를 입력해주세요: ");
+//        String seq = sc.nextLine();
+
         System.out.print("회원번호를 입력해주세요: ");
         String seq = sc.nextLine();
         SignUpController signUpController = new SignUpController();
         Map<String, String> parameter = new HashMap<>();
+
 
         String id;
         do {
@@ -30,6 +35,11 @@ public class SignUp {
         } while (signUpController.checkIdDuplicate(id)); // 중복되는 아이디가 입력될 경우 반복
         parameter.put("userId", id);
 
+
+        System.out.print("아이디를 입력해주세요: ");
+        String id = sc.nextLine();
+
+
         System.out.print("비밀번호를 입력해주세요: ");
         String pwd = sc.nextLine();
 
@@ -42,8 +52,16 @@ public class SignUp {
 
 //        Map<String, String> parameter = new HashMap<>();
 
+
+//        parameter.put("userCode", seq);
+
         parameter.put("userCode", seq);
+
 //        parameter.put("userId", id);
+
+
+        parameter.put("userId", id);
+
         parameter.put("userPwd", pwd);
         parameter.put("userNickName", nick);
         parameter.put("userGender", gender);

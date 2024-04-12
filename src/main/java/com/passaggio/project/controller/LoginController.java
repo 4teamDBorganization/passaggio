@@ -22,10 +22,6 @@ public class LoginController {
         String userId = parameter.get("userId");
         String userPwd = parameter.get("userPwd");
 
-//        SignUpDTO LoginDTO = new SignUpDTO();
-//        LoginDTO.setId(userId);
-//        LoginDTO.setPwd(userPwd);
-
         loginService.gologin(userId, userPwd);
 
         System.out.println();
