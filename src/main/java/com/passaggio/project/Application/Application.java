@@ -32,8 +32,6 @@ public class Application {
             System.out.print("--> ");
             int choose = sc.nextInt();
 
-            //String loginNumString = sc.next();          // 숫자 입력 시에 오류가 나지 않게 하기 위해서 일부러 입력을 String으로 받음
-
             if (choose == 1) {
                 Login loginService = new Login();
                 Map<String, String> loginInfo = loginService.inputMenu();
@@ -43,7 +41,6 @@ public class Application {
                 System.out.println("회원 가입을 시작합니다.");
                 Map<String, String> signUpInfo = SignUp.inputMenu();
                 signUpController.registerSignUp(signUpInfo);
-//                System.out.println("회원 가입이 완료되었습니다.");
             }else if (choose == 3){
                 System.out.println("프로그램을 종료합니다.");
                 exit(0);
