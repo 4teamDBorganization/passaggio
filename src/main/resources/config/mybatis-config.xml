@@ -6,8 +6,9 @@
     <properties resource="config/connection-info.properties"/>
 
     <typeAliases>
-        <package name="com.passaggio.project.model.playlist"/>
-        <package name="com.passaggio.project.model.songinfo"/>
+        <typeAlias type="com.passaggio.project.model.playlist.PlaylistTO" alias="PlaylistTO"/>
+        <typeAlias type="com.passaggio.project.model.songinfo.SongInfoTO" alias="SongInfoTO"/>
+        <typeAlias type="com.passaggio.project.model.listcontent.ListContentTO" alias="ListContentTO"/>
     </typeAliases>
 
     <environments default="dev">
@@ -25,5 +26,6 @@
     <mappers>
         <mapper resource="com/passaggio/project/mapper/PlaylistMapper.xml" />
         <mapper resource="com/passaggio/project/mapper/SongInfoMapper.xml" />
+        <mapper resource="com/passaggio/project/mapper/ListContentMapper.xml" />
     </mappers>
 </configuration>

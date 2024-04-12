@@ -1,4 +1,4 @@
-package com.passaggio.project.Application;
+package com.passaggio.project.application;
 
 import com.passaggio.project.controller.Controller;
 
@@ -7,7 +7,6 @@ import java.util.*;
 public class Application {
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         Controller controller = new Controller();
 
@@ -31,6 +30,8 @@ public class Application {
                 } catch (InputMismatchException e) {
                     System.out.println("잘못된 관리 번호입니다.");
                     continue;
+                } finally {
+                    sc.nextLine();
                 }
 
                 switch (no) {

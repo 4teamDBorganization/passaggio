@@ -3,12 +3,12 @@ package com.passaggio.project.model.songinfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@Alias("SongInfoTO")
+@ToString
 public class SongInfoTO {
 
     private int seq;

@@ -8,7 +8,6 @@ import org.apache.ibatis.type.Alias;
 @Getter
 @Setter
 @ToString
-@Alias("PlaylistTO")
 public class PlaylistTO {
 
     private int seq;

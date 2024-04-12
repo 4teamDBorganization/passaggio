@@ -3,10 +3,35 @@
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.passaggio.project.mapper.SongInfoMapper">
-    <insert id="insertSongInfo" parameterType="SongInfoTO" useGeneratedKeys="true" keyProperty="sseq">
+    <select id="selectSongByInfo" parameterType="SongInfoTO" resultType="SongInfoTO">
+        SELECT
+            *
+        FROM
+            song_info
+        WHERE
+            replace(singer, ' ', '') = replace(#{singer}, ' ', '')
+            AND replace(title, ' ', '') = replace(#{title}, ' ', '')
+    </select>
+
+    <select id="selectSongsInContents" parameterType="java.util.List" resultType="SongInfoTO">
+        SELECT
+            *
+        FROM
+            song_info
+        WHERE
+            seq IN
+            <foreach collection="list" item="seq" open="(" separator="," close=")">
+                #{seq}
+            </foreach>
+    </select>
+
+    <!-- useGeneratedKeys : 쿼리 실행 후 자동 생성 키 사용 여부 (auto_increment 값 등)
+        >> 매개변수로 받은 객체를 통해 다시 돌려줌
+        keyProperty : 자동 생성 키를 받을 필드(TO의 경우) 혹은 키 이름(Map의 경우) -->
+    <insert id="insertSongInfo" parameterType="SongInfoTO" useGeneratedKeys="true" keyProperty="seq">
         INSERT INTO
-            song_info (seq, singer, title, link, exp)
+            song_info (singer, title, link, exp)
         VALUES
-            (null, #{singer}, #{title}, #{link} #{exp)
+            (#{singer}, #{title}, #{link}, #{exp})
     </insert>
 </mapper>
