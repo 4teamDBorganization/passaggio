@@ -1,5 +1,6 @@
 package com.passaggio.project.view;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.passaggio.project.model.playlist.PlaylistTO;
@@ -324,17 +325,26 @@ public class Views {
             // Gson 라이브러리 이용 JSON 데이터 파싱
             JsonObject obj = (JsonObject)JsonParser.parseString(data);
 
-            value = obj.getAsJsonObject("contents")
+            JsonArray arr = obj.getAsJsonObject("contents")
                     .getAsJsonObject("twoColumnSearchResultsRenderer")
                     .getAsJsonObject("primaryContents")
                     .getAsJsonObject("sectionListRenderer")
                     .getAsJsonArray("contents")
                     .get(0).getAsJsonObject()
                     .getAsJsonObject("itemSectionRenderer")
-                    .getAsJsonArray("contents")
-                    .get(0).getAsJsonObject()
-                    .getAsJsonObject("videoRenderer")
-                    .get("videoId").getAsString();
+                    .getAsJsonArray("contents");
+
+            try{
+                value = arr.get(0).getAsJsonObject()
+                        .getAsJsonObject("videoRenderer")
+                        .get("videoId").getAsString();
+
+            }catch (NullPointerException e){
+                System.out.println("catch");
+                value = arr.get(1).getAsJsonObject()
+                        .getAsJsonObject("videoRenderer")
+                        .get("videoId").getAsString();
+            }
 
         } catch (IOException e) {
             System.out.println("[Error] : " + e.getMessage());
