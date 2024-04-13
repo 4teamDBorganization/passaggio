@@ -39,8 +39,14 @@
     <select id="gologin" resultMap="signUpResultMap">
         SELECT * FROM member WHERE id = #{ id } AND pwd = #{ pwd }
     </select>
+    <!--닉네임 정보 가져오는 sql-->
     <select id="whatIsMyNick" resultType="String">
         SELECT nick FROM member WHERE id = #{ id }
     </select>
-
+    <!--id찾기-->
+    <select id="FindAccountId" resultMap="signUpResultMap">
+        SELECT * FROM member WHERE seq = #{ seq }
+                               AND nick = #{ nick }
+                               AND gender = #{ gender }
+    </select>
 </mapper>
