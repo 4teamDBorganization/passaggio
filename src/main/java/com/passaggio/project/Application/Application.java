@@ -36,6 +36,8 @@ public class Application {
                 Login loginService = new Login();
                 Map<String, String> loginInfo = loginService.inputMenu();
                 loginController.goLogin(loginInfo);
+                String userId = loginInfo.get("userId");
+                mypageService.showMypage(userId);
                 ing = false;
             } else if (choose == 2) {
                 System.out.println("회원 가입을 시작합니다.");
@@ -46,7 +48,7 @@ public class Application {
                 exit(0);
             }
         }
-        mypageService.showMypage();
+//        mypageService.showMypage();
 
     }
 
