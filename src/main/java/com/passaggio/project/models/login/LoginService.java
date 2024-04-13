@@ -8,6 +8,15 @@ import static com.passaggio.project.common.Template.getSqlSession;
 
 public class LoginService {
 
+    //아이디 존재 여부
+    public static boolean isIdInUse(String id) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            String existId = mapper.whatIsId(id);
+            return existId != null;
+        }
+    }
+
     public SignUpDTO gologin(String id, String pwd) {
         try (SqlSession sqlSession = getSqlSession()) {
             LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
