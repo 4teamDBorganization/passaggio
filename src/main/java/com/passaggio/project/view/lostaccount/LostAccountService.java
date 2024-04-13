@@ -14,4 +14,11 @@ public class LostAccountService {
             return findId != null; //false 반환
         }
     }
+
+    public String tellMyId(int seq, String nick, String gender) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            return mapper.findUserIdByInfo(seq, nick, gender);
+        }
+    }
 }
