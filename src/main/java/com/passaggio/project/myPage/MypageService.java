@@ -1,5 +1,6 @@
 package com.passaggio.project.myPage;
 
+import com.passaggio.project.models.login.LoginService;
 import com.passaggio.project.user.Delay;
 
 import java.util.Scanner;
@@ -8,9 +9,11 @@ public class MypageService {
         public void showMypage(String userId) {
             Scanner sc = new Scanner(System.in);
 
+            LoginService loginService = new LoginService();
+            String userNickName = loginService.WhatIsNickName(userId);
 
             // 마이페이지 화면
-            System.out.println(userId + "님 마이페이지에 오신 것을 환영합니다!");
+            System.out.println(userId + "님 "+ userNickName +"페이지에 오신 것을 환영합니다!");
 
             do {
                 System.out.println("================================");
