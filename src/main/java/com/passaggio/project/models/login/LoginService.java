@@ -27,4 +27,11 @@ public class LoginService {
         }
     }
 
+    public String WhatIsNickName(String nick) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            String WINN = mapper.whatIsMyNick(nick);
+            return WINN;
+        }
+    }
 }
