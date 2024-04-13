@@ -119,6 +119,8 @@ public class Controller {
                     break;
 
                 case 1:     // 1 - 노래재생
+                    parameter.put("infos", infos);
+                    playSong(parameter);
                     break;
 
                 case 2:     // 2 - 노래추가
@@ -133,6 +135,12 @@ public class Controller {
             }
         }while(flag);
         
+    }
+
+    public void playSong(Map<String, Object> parameter){
+
+        views.playSong(parameter);
+
     }
 
     public void addSong(int lseq){

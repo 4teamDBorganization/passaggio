@@ -10,8 +10,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 public class Views {
 
@@ -156,7 +161,7 @@ public class Views {
         Map<String, Object> parameter = new HashMap<>();
 
         int input = 0;
-        boolean flag = false;
+        boolean flag, flag2;
 
         do{
             flag = false;
@@ -168,61 +173,169 @@ public class Views {
                 for(int i = 0; i < infos.size(); i++){
                     System.out.println("번호 " + (i + 1) + " : " + infos.get(i));
                 }
-            }
 
-            System.out.println("=========== 메뉴 ============");
-            System.out.println("0. 뒤로가기");
-            System.out.println("1. 노래 재생");
-            System.out.println("2. 노래 추가");
-            System.out.println("3. 노래 삭제");
-            System.out.println("=============================");
-            System.out.print("메뉴 번호 입력 : ");
+                System.out.println("=========== 메뉴 ============");
+                System.out.println("0. 뒤로가기");
+                System.out.println("1. 노래 재생");
+                System.out.println("2. 노래 추가");
+                System.out.println("3. 노래 삭제");
+                System.out.println("=============================");
+                System.out.print("메뉴 번호 입력 : ");
 
-            try {
-                input = sc.nextInt();
-                parameter.put("page", input);
+                try {
+                    input = sc.nextInt(); sc.nextLine();
+                    parameter.put("page", input);
 
-                switch(input){
-                    // 뒤로 가기
-                    case 0:
-                        break;
-                    // 노래 재생
-                    case 1:
-                        System.out.print("재생할 노래 번호 입력 : ");
-                        try {
-                            input = sc.nextInt();
+                    switch(input){
+                        // 뒤로 가기
+                        case 0:
+                            break;
+                        // 노래 재생
+                        case 1:
+                            do{
+                                flag2 = false;
+                                try {
+                                    System.out.print("1 - 전체 재생 / 2 - 선택 재생");
+                                    input = sc.nextInt(); sc.nextLine();
+                                    parameter.put("isAll", input);
 
-                            if(1 <= input && input <= infos.size()){
-                                parameter.put("sseq", input - 1);
-                                break;
-                            }
-                        } catch (InputMismatchException e) {
-                            System.out.println("올바른 노래 번호를 입력하세요.");
+                                    if(input == 0){
+                                        flag = true;
+
+                                    }else if(input == 1){
+                                        System.out.println("1 - 순차 재생 / 2- 셔플 재생");
+                                        input = sc.nextInt(); sc.nextLine();
+
+                                        parameter.put("isSequential", input);
+
+                                    }else if(input == 2){
+                                        do{
+                                            System.out.print("재생할 노래 번호 : ");
+                                            input = sc.nextInt(); sc.nextLine();
+
+                                            if(1 <= input && input <= infos.size()){
+                                                parameter.put("songIndex", input - 1);
+                                                break;
+                                            }else{
+                                                System.out.println("올바른 노래 번호를 입력해주세요.");
+                                            }
+                                        } while(true);
+
+                                    }else{
+                                        System.out.println("올바른 번호를 입력해주세요.");
+                                        flag2 = true;
+                                    }
+                                } catch (InputMismatchException e) {
+                                    System.out.println("올바른 번호를 입력해주세요.");
+                                    flag2 = true;
+                                }
+                            } while(flag2);
+                            break;
+                        // 노래 추가
+                        case 2:break;
+                        // 노래 삭제
+                        case 3: break;
+                        // 다른 메뉴 번호 입력 시 처리
+                        default:
+                            System.out.println("올바른 메뉴 번호를 입력하세요.");
                             flag = true;
-                        } finally{
-                            sc.nextLine();
-                        }
-                        break;
-                    // 노래 추가
-                    case 2:break;
-                    // 노래 삭제
-                    case 3: break;
-                    // 다른 메뉴 번호 입력 시 처리
-                    default:
-                        System.out.println("올바른 메뉴 번호를 입력하세요.");
-                        flag = true;
+                    }
+                // 숫자 외 문자 입력 시 처리
+                } catch (InputMismatchException e) {
+                    System.out.println("올바른 메뉴 번호를 입력하세요.");
+                    flag = true;
                 }
-            // 숫자 외 문자 입력 시 처리
-            } catch (InputMismatchException e) {
-                System.out.println("올바른 메뉴 번호를 입력하세요.");
-                flag = true;
-            } finally {
-                sc.nextLine();
+            }else{
+                System.out.println("[ 저장된 노래가 없습니다 ]");
+                System.out.println("=========== 메뉴 ============");
+                System.out.println("0. 뒤로가기");
+                System.out.println("1. 노래 추가");
+                System.out.println("=============================");
+                System.out.print("메뉴 번호 입력 : ");
+
+                try{
+                    input = sc.nextInt(); sc.nextLine();
+                    parameter.put("page", input);
+
+                    switch(input){
+                        // 뒤로 가기
+                        case 0:
+                            break;
+                        // 노래 추가
+                        case 1:
+                            parameter.put("page", 2);
+                            break;
+                        default:
+                            // 다른 메뉴 번호 입력 시 처리
+                            System.out.println("올바른 메뉴 번호를 입력하세요.");
+                            flag = true;
+                    }
+                // 숫자 외 문자 입력 시 처리
+                } catch (InputMismatchException e) {
+                    System.out.println("올바른 메뉴 번호를 입력하세요.");
+                    flag = true;
+                }
+
             }
 
         } while(flag);
 
         return parameter;
+    }
+
+    public void playSong(Map<String, Object> parameter){
+        @SuppressWarnings("unchecked")
+        List<SongInfoTO> infos = (List<SongInfoTO>) parameter.get("infos");
+        boolean isAll = (Integer)parameter.get("isAll") == 1;
+
+        Desktop desktop = Desktop.getDesktop();
+
+        if(isAll){
+            StringJoiner sj = new StringJoiner(",");
+            List<String> links = new ArrayList<>();
+            for(SongInfoTO info : infos){
+                links.add(info.getLink());
+            }
+
+            boolean isSequential = (Integer)parameter.get("isSequential") == 1;
+            // 순차 재생
+            if(isSequential){
+                for(String link : links){
+                    sj.add(link);
+                }
+
+                try {
+                    desktop.browse(new URI("https://www.youtube.com/watch_videos?video_ids=" + sj));
+                } catch (IOException | URISyntaxException e) {
+                    System.out.println("[Error]Views.playSong : " + e.getMessage());
+                }
+            // 셔플 재생
+            }else{
+                Random random = new Random();
+                int size = links.size();
+
+                for(int i = 0, index; i < size; i++){
+                    index = random.nextInt(size - i);
+
+                    sj.add(links.remove(index));
+                }
+
+                try {
+                    desktop.browse(new URI("https://www.youtube.com/watch_videos?video_ids=" + sj));
+                } catch (IOException | URISyntaxException e) {
+                    System.out.println("[Error]Views.playSong : " + e.getMessage());
+                }
+            }
+
+        }else{
+            SongInfoTO info = infos.get((Integer)parameter.get("songIndex"));
+
+            try {
+                desktop.browse(new URI("https://www.youtube.com/watch?v=" + info.getLink()));
+            } catch (IOException | URISyntaxException e) {
+                System.out.println("[Error]Views.playSong : " + e.getMessage());
+            }
+        }
     }
 
     // 노래 추가
@@ -340,7 +453,6 @@ public class Views {
                         .get("videoId").getAsString();
 
             }catch (NullPointerException e){
-                System.out.println("catch");
                 value = arr.get(1).getAsJsonObject()
                         .getAsJsonObject("videoRenderer")
                         .get("videoId").getAsString();
