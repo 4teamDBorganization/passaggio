@@ -7,6 +7,7 @@ public interface LoginMapper {
 
     String whatIsId(String id);
     String whatIsNick(String nick);
+    String whatIsMyNick(String nick);
 
     SignUpDTO gologin(SignUpDTO signUpDTO);
 
