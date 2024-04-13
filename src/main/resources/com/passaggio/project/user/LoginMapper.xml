@@ -39,5 +39,8 @@
     <select id="gologin" resultMap="signUpResultMap">
         SELECT * FROM member WHERE id = #{ id } AND pwd = #{ pwd }
     </select>
+    <select id="whatIsMyNick" resultType="String">
+        SELECT nick FROM member WHERE id = #{ id }
+    </select>
 
 </mapper>
