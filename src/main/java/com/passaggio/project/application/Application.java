@@ -10,13 +10,13 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         Controller controller = new Controller();
 
-        boolean isLoggedIn = false;
-
-        int no = 0;
+//        boolean isLoggedIn = false;
+        boolean isLoggedIn = true; // 임시
+        int inputInt;
 
         do{
-            do {
-                no = 0;
+            while(!isLoggedIn){
+                inputInt = 0;
 
                 System.out.println("========== 메뉴 관리 ==========");
                 System.out.println("1. 로그인");
@@ -26,7 +26,7 @@ public class Application {
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
                 try {
-                    no = sc.nextInt();
+                    inputInt = sc.nextInt();
                 } catch (InputMismatchException e) {
                     System.out.println("잘못된 관리 번호입니다.");
                     continue;
@@ -34,8 +34,9 @@ public class Application {
                     sc.nextLine();
                 }
 
-                switch (no) {
-                    case 1: isLoggedIn = controller.logIn(inputLoginInfo()); break;
+                switch (inputInt) {
+                    case 1:
+                        isLoggedIn = controller.logIn(inputLoginInfo()); break;
 //                case 2: controller.signUp(inputMenuCode()); break;
                     case 9:
                         sc.close();
@@ -43,10 +44,10 @@ public class Application {
                     default: System.out.println("잘못된 관리 번호입니다."); break;
                 }
 
-            } while(!isLoggedIn);
+            }
 
-            do {
-                no = 0;
+            while (isLoggedIn){
+                inputInt = 0;
 
                 System.out.println("========== 메뉴 관리 ==========");
                 System.out.println("1. 전체 플레이 리스트 조회");
@@ -57,25 +58,30 @@ public class Application {
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
                 try {
-                    no = sc.nextInt();
+                    inputInt = sc.nextInt();
                 } catch (InputMismatchException e) {
                     System.out.println("잘못된 관리 번호입니다.");
                     continue;
                 }
 
-                switch (no) {
-                    case 1: controller.wholeList(); break;
-                    case 2: controller.myPage(); break;
-                    case 8: isLoggedIn = controller.logOut(); break;
+                switch (inputInt) {
+                    case 1:
+                        controller.wholeList(); break;
+                    case 2:
+                        controller.myPage(); break;
+                    case 8:
+                        isLoggedIn = controller.logOut(); break;
                     case 9:
                         controller.logOut();
                         sc.close();
                         System.out.println("메뉴 관리 프로그램을 종료합니다.");
                         return;
-                    default: System.out.println("잘못된 관리 번호입니다."); break;
+                    default:
+                        System.out.println("잘못된 관리 번호입니다.");
+                        break;
                 }
 
-            } while(isLoggedIn);
+            }
 
         } while(true);
     }

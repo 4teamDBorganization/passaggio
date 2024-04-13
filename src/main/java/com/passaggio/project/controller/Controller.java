@@ -27,6 +27,7 @@ public class Controller {
         plService = new PlaylistService();
         lcService = new ListContentService();
         siService = new SongInfoService();
+        loggedInUserSeq = 1; // 임시
     }
 
     public boolean logIn(Map<String, String> loginInfo){
@@ -149,6 +150,12 @@ public class Controller {
 
         boolean flag = false;
         int sseq = 0;
+
+        // 크롤링 실패
+        if(sto.getLink() == null){
+            addSongOk(true);
+            return;
+        }
 
         // 중복 체크 : DB상에 같은 가수-제목 데이터 존재 여부
         SongInfoTO checkInfo = siService.selectSongByInfo(sto);

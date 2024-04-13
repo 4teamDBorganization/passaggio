@@ -1,11 +1,14 @@
 package com.passaggio.project.view;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.MalformedJsonException;
 import com.passaggio.project.model.playlist.PlaylistTO;
 import com.passaggio.project.model.songinfo.SongInfoTO;
 import org.jsoup.Jsoup;
+import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -14,7 +17,6 @@ import java.awt.*;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.*;
 import java.util.List;
 
@@ -40,45 +42,53 @@ public class Views {
 
         Map<String, Integer> parameter = new HashMap<>();
 
-        int lseq = 0;
-
-        int no = 0;
+        int inputInt = 0;
+        String inputStr = "";
         boolean flag = false;
 
+        // 플레이리스트가 한 개 이상 존재할 때
         if(plList != null){
 
-            for(int i = 0; i < plList.size(); i++){
-                System.out.println("번호 " + (i + 1) + " : " + plList.get(i).toString());
-            }
-
             do{
-
                 flag = false;
 
-                System.out.println("=============================");
+                // 사용자 플레이리스트 전체 출력
+                System.out.println("=============== 마이 페이지 ===============");
+                PlaylistTO tmp = null;
+                for(int i = 0; i < plList.size(); i++){
+                    tmp = plList.get(i);
+                    System.out.println("[" + (i + 1) + "] " + tmp.getLname() + (!StringUtil.isBlank(tmp.getExp()) ? " - " + tmp.getExp() : ""));
+                }
+
+                System.out.println("===========================================");
                 System.out.println("0. 뒤로 가기");
                 System.out.println("1. 플레이리스트 추가");
                 System.out.println("2. 플레이리스트 삭제");
                 System.out.println("3. 플레이리스트 수정");
                 System.out.println("4. 플레이리스트 조회");
-                System.out.println("=============================");
-                System.out.print("메뉴 번호를 입력하세요 : ");
+                System.out.println("===========================================");
+                System.out.print("메뉴 번호 입력 : ");
 
-                try {
-                    no = sc.nextInt();
-                } catch (InputMismatchException e) {
+
+                inputStr = sc.nextLine();
+                if(inputStr.length() != 1 || !Character.isDigit(inputStr.charAt(0))) {
                     System.out.println("올바른 메뉴 번호가 아닙니다.");
                     flag = true;
                     continue;
-                } finally {
-                    sc.nextLine();
+                }else{
+                    inputInt = Integer.parseInt(inputStr);
                 }
 
-                switch (no) {
+                switch (inputInt) {
+                    // 뒤로가기
                     case 0: parameter.put("page", 0); break;
+                    // 리스트 추가
                     case 1: parameter.put("page", 1); break;
+                    // 리스트 삭제
                     case 2: parameter.put("page", 2); break;
+                    // 리스트 수정
                     case 3: parameter.put("page", 3); break;
+                    // 리스트 조회
                     case 4:
                         do{
                             flag = false;
@@ -86,11 +96,11 @@ public class Views {
                             System.out.print("조회할 플레이리스트 번호 입력(0 - 취소) : ");
 
                             try {
-                                no = sc.nextInt();
+                                inputInt = sc.nextInt();
 
-                                if(0 < no && no <= plList.size()){
-                                    parameter.put("selectedIndex", no - 1);
-                                }else if(no == 0){
+                                if(0 < inputInt && inputInt <= plList.size()){
+                                    parameter.put("selectedIndex", inputInt - 1);
+                                }else if(inputInt == 0){
                                     System.out.println("취소");
                                     flag = true;
                                     break;
@@ -240,7 +250,7 @@ public class Views {
                             System.out.println("올바른 메뉴 번호를 입력하세요.");
                             flag = true;
                     }
-                // 숫자 외 문자 입력 시 처리
+                    // 숫자 외 문자 입력 시 처리
                 } catch (InputMismatchException e) {
                     System.out.println("올바른 메뉴 번호를 입력하세요.");
                     flag = true;
@@ -270,7 +280,7 @@ public class Views {
                             System.out.println("올바른 메뉴 번호를 입력하세요.");
                             flag = true;
                     }
-                // 숫자 외 문자 입력 시 처리
+                    // 숫자 외 문자 입력 시 처리
                 } catch (InputMismatchException e) {
                     System.out.println("올바른 메뉴 번호를 입력하세요.");
                     flag = true;
@@ -309,7 +319,7 @@ public class Views {
                 } catch (IOException | URISyntaxException e) {
                     System.out.println("[Error]Views.playSong : " + e.getMessage());
                 }
-            // 셔플 재생
+                // 셔플 재생
             }else{
                 Random random = new Random();
                 int size = links.size();
@@ -419,15 +429,19 @@ public class Views {
         String value = null;
 
         try {
+            Document doc = null;
+            Elements scripts = null;
+
             // Jsoup 라이브러리 이용 URL 요청에 대한 response를 받음
             // script를 통한 동적페이지 : user-agent 값 없을 시  미반환 > .userAgent(브라우저 정보) 사용
-            Document doc = Jsoup.connect("https://www.youtube.com/results?search_query=" + singer + "+" + title)
+            doc = Jsoup.connect("https://www.youtube.com/results?search_query=" + singer + "+-+" + title + "+Auto-generated")
                     .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36")
                     .get();
 
             // script 태그 데이터들만 받음
-            Elements scripts = doc.getElementsByTag("script");
+            scripts = doc.getElementsByTag("script");
 
+            System.out.println(scripts.size());
             // 주요 데이터는 34번째 script 태그 내부에 존재
             Element element = scripts.get(34);
             String data = element.html();
@@ -438,26 +452,34 @@ public class Views {
             // Gson 라이브러리 이용 JSON 데이터 파싱
             JsonObject obj = (JsonObject)JsonParser.parseString(data);
 
-            JsonArray arr = obj.getAsJsonObject("contents")
+            JsonArray level1 = obj.getAsJsonObject("contents")
                     .getAsJsonObject("twoColumnSearchResultsRenderer")
                     .getAsJsonObject("primaryContents")
                     .getAsJsonObject("sectionListRenderer")
-                    .getAsJsonArray("contents")
-                    .get(0).getAsJsonObject()
-                    .getAsJsonObject("itemSectionRenderer")
                     .getAsJsonArray("contents");
 
-            try{
-                value = arr.get(0).getAsJsonObject()
-                        .getAsJsonObject("videoRenderer")
-                        .get("videoId").getAsString();
+            JsonArray level2 = null;
+            int firstIndex = 0;
 
-            }catch (NullPointerException e){
-                value = arr.get(1).getAsJsonObject()
-                        .getAsJsonObject("videoRenderer")
-                        .get("videoId").getAsString();
-            }
+            do{
+                level2 = level1.get(firstIndex).getAsJsonObject()
+                        .getAsJsonObject("itemSectionRenderer")
+                        .getAsJsonArray("contents");
 
+                for(JsonElement tempObj : level2){
+                    if(tempObj.getAsJsonObject().has("videoRenderer")){
+                        value = tempObj.getAsJsonObject()
+                                .getAsJsonObject("videoRenderer")
+                                .get("videoId").getAsString();
+                        break;
+                    }
+                }
+
+                firstIndex++;
+            } while(value == null);
+
+        } catch (MalformedJsonException e){
+            System.out.println("[Error] : " + e.getMessage());
         } catch (IOException e) {
             System.out.println("[Error] : " + e.getMessage());
         }
