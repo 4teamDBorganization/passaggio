@@ -1,5 +1,7 @@
 package com.passaggio.project.view.lostaccount;
 
+import com.passaggio.project.user.Delay;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -55,7 +57,31 @@ public class LostAccount {
                     }else {
                         System.out.println("================================");
                         System.out.println("일치합니다.");
+                        System.out.println("잠시만 기다리세요. 아이디를 찾고 있습니다.");
                         System.out.println("================================");
+                        Delay.countdelay(1000);
+                        System.out.println("............................");
+                        Delay.countdelay(1000);
+                        System.out.println("..................");
+                        Delay.countdelay(1000);
+                        System.out.println(".........");
+                        Delay.countdelay(1000);
+                        System.out.println("..");
+                        Delay.countdelay(1000);
+                        System.out.println("아이디를 찾았습니다!");
+                        Delay.countdelay(1000);
+                        String userId = lostAccountService.tellMyId(pnum, pnick, pgender);
+                        if (userId != null) {
+                            System.out.println();
+                            System.out.println("================================");
+                            System.out.println("귀하의 아이디는 " + userId + " 입니다.");
+                            System.out.println("================================");
+                            System.out.println();
+                            Delay.countdelay(2000);
+                            break;
+                        } else {
+                            System.out.println("아이디를 찾을 수 없습니다.");
+                        }
                     }
                 }while(true);
 
