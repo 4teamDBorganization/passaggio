@@ -14,12 +14,21 @@ public class SignUpService {
         }
     }
 
-    //중복 확인
+    //아이디 중복 확인
     public boolean isIdAlreadyInUse(String id) {
         try (SqlSession sqlSession = getSqlSession()) {
             LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
             String existId = mapper.whatIsId(id);
             return existId != null;
+        }
+    }
+
+    //닉네임 중복 확인
+    public boolean isNickAlreadyInUse(String nick) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            String existNick = mapper.whatIsNick(nick);
+            return existNick != null;
         }
     }
 }

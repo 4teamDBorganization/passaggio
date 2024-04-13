@@ -17,6 +17,11 @@ public class LoginController {
         loginService = new LoginService();
     }
 
+    //아이디 일치 확인
+    public static boolean matchId(String id) {
+        return LoginService.isIdInUse(id);
+    }
+
     public void goLogin(Map<String, String> parameter){
 
         String userId = parameter.get("userId");
