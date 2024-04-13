@@ -49,4 +49,7 @@
                                AND nick = #{ nick }
                                AND gender = #{ gender }
     </select>
+    <select id="findUserIdByInfo" resultType="string">
+        SELECT id FROM member WHERE seq = #{seq} AND nick = #{nick} AND gender = #{gender}
+    </select>
 </mapper>
