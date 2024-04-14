@@ -16,6 +16,14 @@ public class LoginService {
             return existId != null;
         }
     }
+    //비밀번호 일치
+    public static boolean isPwInUse(String pwd) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            String existPwd = mapper.whatIsPwd(pwd);
+            return existPwd != null;
+        }
+    }
 
     public SignUpDTO gologin(String id, String pwd) {
         try (SqlSession sqlSession = getSqlSession()) {
