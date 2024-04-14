@@ -1,7 +1,7 @@
-package com.passaggio.project.models.login;
+package com.passaggio.project.model.login;
 
 import com.passaggio.project.mapper.LoginMapper;
-import com.passaggio.project.models.signup.SignUpDTO;
+import com.passaggio.project.model.signup.SignUpDTO;
 import org.apache.ibatis.session.SqlSession;
 
 import static com.passaggio.project.common.Template.getSqlSession;

@@ -1,4 +1,4 @@
-package com.passaggio.project.models.signup;
+package com.passaggio.project.model.signup;
 
 import com.passaggio.project.mapper.LoginMapper;
 import org.apache.ibatis.session.SqlSession;

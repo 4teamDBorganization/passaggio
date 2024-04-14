@@ -1,4 +1,4 @@
-package com.passaggio.project.models.signup;
+package com.passaggio.project.model.signup;
 
 public class SignUpDTO implements java.io.Serializable{
     private int seq;            //회원번호

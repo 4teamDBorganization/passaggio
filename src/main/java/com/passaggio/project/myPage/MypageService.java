@@ -1,6 +1,6 @@
 package com.passaggio.project.myPage;
 
-import com.passaggio.project.models.login.LoginService;
+import com.passaggio.project.model.login.LoginService;
 import com.passaggio.project.delay.Delay;
 
 import java.util.Scanner;

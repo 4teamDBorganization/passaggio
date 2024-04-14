@@ -1,6 +1,6 @@
 package com.passaggio.project.mapper;
 
-import com.passaggio.project.models.signup.SignUpDTO;
+import com.passaggio.project.model.signup.SignUpDTO;
 import org.apache.ibatis.annotations.Param;
 
 public interface LoginMapper {

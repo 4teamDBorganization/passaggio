@@ -25,7 +25,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/passaggio/project/user/LoginMapper.xml"/>
+        <mapper resource="com/passaggio/project/mapper/LoginMapper.xml"/>
         <mapper resource="com/passaggio/project/mapper/PlaylistMapper.xml" />
         <mapper resource="com/passaggio/project/mapper/SongInfoMapper.xml" />
         <mapper resource="com/passaggio/project/mapper/ListContentMapper.xml" />

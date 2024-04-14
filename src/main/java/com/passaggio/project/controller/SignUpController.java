@@ -1,7 +1,7 @@
 package com.passaggio.project.controller;
 
-import com.passaggio.project.models.signup.SignUpDTO;
-import com.passaggio.project.models.signup.SignUpService;
+import com.passaggio.project.model.signup.SignUpDTO;
+import com.passaggio.project.model.signup.SignUpService;
 import com.passaggio.project.delay.Delay;
 import com.passaggio.project.view.signup.SignUp;
 
