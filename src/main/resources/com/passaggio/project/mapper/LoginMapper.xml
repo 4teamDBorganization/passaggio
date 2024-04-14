@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.passaggio.project.mapper.LoginMapper">
+
+    <resultMap id="signUpResultMap" type="com.passaggio.project.models.signup.SignUpDTO">
+        <id property="seq" column="seq"/>
+        <result property="id" column="id"/>
+        <result property="pwd" column="pwd"/>
+        <result property="nick" column="nick"/>
+        <result property="gender" column="gender"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="com.passaggio.project.models.signup.SignUpDTO">
+        INSERT INTO member (
+                             seq
+                           , id
+                           , pwd
+                           , nick
+                           , gender
+        )
+        VALUES (
+        #{ seq }
+        , #{ id }
+        , #{ pwd }
+        , #{ nick }
+        , #{ gender }
+        )
+    </insert>
+    <!--아이디 중복 체크 sql-->
+    <select id="whatIsId" resultType="String">
+        SELECT id FROM member WHERE id = #{ id }
+    </select>
+    <!--닉네임 중복 체크 sql-->
+    <select id="whatIsNick" resultType="String">
+        SELECT nick FROM member WHERE nick = #{ nick }
+    </select>
+    <!--login sql-->
+    <select id="gologin" resultMap="signUpResultMap">
+        SELECT * FROM member WHERE id = #{ id } AND pwd = #{ pwd }
+    </select>
+    <!--닉네임 정보 가져오는 sql-->
+    <select id="whatIsMyNick" resultType="String">
+        SELECT nick FROM member WHERE id = #{ id }
+    </select>
+    <!--id찾기-->
+    <select id="FindAccountId" resultMap="signUpResultMap">
+        SELECT * FROM member WHERE seq = #{ seq }
+                               AND nick = #{ nick }
+                               AND gender = #{ gender }
+    </select>
+    <select id="findUserIdByInfo" resultType="string">
+        SELECT id FROM member WHERE seq = #{seq} AND nick = #{nick} AND gender = #{gender}
+    </select>
+    <select id="FindAccountPwd" resultMap="signUpResultMap">
+    SELECT * FROM member WHERE seq = #{ seq }
+                           AND id = #{ id }
+    </select>
+    <select id="findUserPwdByInfo" resultType="string">
+    SELECT pwd FROM member WHERE seq = #{seq} AND id = #{id}
+    </select>
+</mapper>

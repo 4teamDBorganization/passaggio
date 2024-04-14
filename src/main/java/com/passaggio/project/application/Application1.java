@@ -4,7 +4,7 @@ import com.passaggio.project.controller.Controller;
 
 import java.util.*;
 
-public class Application {
+public class Application1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
