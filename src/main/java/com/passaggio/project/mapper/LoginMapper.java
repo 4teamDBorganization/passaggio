@@ -11,6 +11,8 @@ public interface LoginMapper {
     String whatIsMyNick(String nick);
     SignUpDTO FindAccountId(@Param("seq")int seq, @Param("nick")String nick, @Param("gender")String gender);
     String findUserIdByInfo(@Param("seq") int seq, @Param("nick") String nick, @Param("gender") String gender);
+    SignUpDTO FindAccountPwd(@Param("seq")int seq, @Param("id")String id);
+    String findUserPwdByInfo(@Param("seq") int seq, @Param("id") String id);
 
     SignUpDTO gologin(SignUpDTO signUpDTO);
 
