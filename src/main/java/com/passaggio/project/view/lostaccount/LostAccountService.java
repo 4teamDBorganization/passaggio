@@ -21,4 +21,19 @@ public class LostAccountService {
             return mapper.findUserIdByInfo(seq, nick, gender);
         }
     }
+
+    public static boolean findmypwd(int seq, String id) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            SignUpDTO findPwd = mapper.FindAccountPwd(seq, id);
+            return findPwd != null; //false 반환
+        }
+    }
+
+    public String tellMyPwd(int seq, String id) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            return mapper.findUserPwdByInfo(seq, id);
+        }
+    }
 }
