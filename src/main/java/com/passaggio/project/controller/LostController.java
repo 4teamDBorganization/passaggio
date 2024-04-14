@@ -1,7 +1,8 @@
-package com.passaggio.project.view.lostaccount;
+package com.passaggio.project.controller;
 
 import com.passaggio.project.models.login.LoginService;
 import com.passaggio.project.view.login.Login;
+import com.passaggio.project.view.lostaccount.LostAccountService;
 
 public class LostController {
     public final Login login;
