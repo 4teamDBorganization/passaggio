@@ -21,6 +21,12 @@ public class SongInfoDAO {
         return mapper.selectSongsInContents(contents);
     }
 
+    public List<SongInfoTO> selectSongsInContents2(SqlSession sqlSession, int lseq) {
+        mapper = sqlSession.getMapper(SongInfoMapper.class);
+
+        return mapper.selectSongsInContents2(lseq);
+    }
+
     public int insertSongInfo(SqlSession sqlSession, SongInfoTO sto){
         mapper = sqlSession.getMapper(SongInfoMapper.class);
 

@@ -33,6 +33,16 @@ public class SongInfoService {
         return infos;
     }
 
+    public List<SongInfoTO> selectSongsInContents2(int lseq) {
+        SqlSession sqlSession = Template.getSqlSession();
+
+        List<SongInfoTO> infos = dao.selectSongsInContents2(sqlSession, lseq);
+
+        sqlSession.close();
+
+        return infos;
+    }
+
     public int insertSongInfo(SongInfoTO sto){
         SqlSession sqlSession = Template.getSqlSession();
 

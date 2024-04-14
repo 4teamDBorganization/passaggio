@@ -43,95 +43,100 @@ public class Views {
         Map<String, Integer> parameter = new HashMap<>();
 
         int inputInt = 0;
-        String inputStr = "";
         boolean flag = false;
 
-        // 플레이리스트가 한 개 이상 존재할 때
-        if(plList != null){
-
-            do{
+        myPage:
+        do{
+            // 플레이리스트가 한 개 이상 존재할 때
+            if(plList != null){
                 flag = false;
 
                 // 사용자 플레이리스트 전체 출력
-                System.out.println("=============== 마이 페이지 ===============");
-                PlaylistTO tmp = null;
-                for(int i = 0; i < plList.size(); i++){
-                    tmp = plList.get(i);
-                    System.out.println("[" + (i + 1) + "] " + tmp.getLname() + (!StringUtil.isBlank(tmp.getExp()) ? " - " + tmp.getExp() : ""));
-                }
-
+                System.out.println("\n=============== 마이 페이지 ===============");
+                printPlList(plList);
                 System.out.println("===========================================");
                 System.out.println("0. 뒤로 가기");
-                System.out.println("1. 플레이리스트 추가");
-                System.out.println("2. 플레이리스트 삭제");
+                System.out.println("1. 플레이리스트 조회");
+                System.out.println("2. 플레이리스트 추가");
                 System.out.println("3. 플레이리스트 수정");
-                System.out.println("4. 플레이리스트 조회");
+                System.out.println("4. 플레이리스트 삭제");
                 System.out.println("===========================================");
                 System.out.print("메뉴 번호 입력 : ");
 
-
-                inputStr = sc.nextLine();
-                if(inputStr.length() != 1 || !Character.isDigit(inputStr.charAt(0))) {
-                    System.out.println("올바른 메뉴 번호가 아닙니다.");
-                    flag = true;
-                    continue;
-                }else{
-                    inputInt = Integer.parseInt(inputStr);
-                }
+                inputInt = intOrZero(sc.nextLine());
 
                 switch (inputInt) {
                     // 뒤로가기
                     case 0: parameter.put("page", 0); break;
+                    // 리스트 조회
+                    case 1:
+                        do{
+                            System.out.println("\n=============== 리스트 조회 ===============");
+                            printPlList(plList);
+                            System.out.println("===========================================");
+                            System.out.print("리스트 번호 입력(취소-0) : ");
+
+                            inputInt = intOrZero(sc.nextLine());
+
+                            if(0 < inputInt && inputInt <= plList.size()){
+                                parameter.put("selectedList", inputInt - 1);
+                                break;
+
+                            }else if(inputInt == 0){
+                                System.out.println("취소");
+                                flag = true;
+                                continue myPage;
+
+                            }else{
+                                System.out.println("올바른 리스트 번호가 아님");
+                            }
+
+                        } while(true);
+
+                        parameter.put("page", 1);
+                        break;
+
                     // 리스트 추가
-                    case 1: parameter.put("page", 1); break;
-                    // 리스트 삭제
                     case 2: parameter.put("page", 2); break;
                     // 리스트 수정
                     case 3: parameter.put("page", 3); break;
-                    // 리스트 조회
-                    case 4:
-                        do{
-                            flag = false;
-
-                            System.out.print("조회할 플레이리스트 번호 입력(0 - 취소) : ");
-
-                            try {
-                                inputInt = sc.nextInt();
-
-                                if(0 < inputInt && inputInt <= plList.size()){
-                                    parameter.put("selectedIndex", inputInt - 1);
-                                }else if(inputInt == 0){
-                                    System.out.println("취소");
-                                    flag = true;
-                                    break;
-
-                                }else{
-                                    throw new InputMismatchException();
-
-                                }
-                            } catch (InputMismatchException e) {
-                                System.out.println("올바른 번호가 아닙니다.");
-                                flag = true;
-                            } finally {
-                                sc.nextLine();
-                            }
-
-                        } while(flag);
-                        parameter.put("page", 4);
-                        break;
+                    // 리스트 삭제
+                    case 4: parameter.put("page", 4); break;
+                    // 다른 번호
                     default:
-                        System.out.println("올바른 메뉴 번호가 아닙니다.");
+                        System.out.println("올바른 메뉴 번호가 아님");
                         flag = true;
                 }
-            } while(flag);
 
-        }else{
+            // 플레이리스트가 존재하지 않을 때
+            }else{
+                System.out.println("\n=============== 마이 페이지 ===============");
+                System.out.println("현재 등록된 플레이리스트가 없습니다.");
+                System.out.println("===========================================");
+                System.out.println("0. 뒤로 가기");
+                System.out.println("1. 플레이리스트 추가");
+                System.out.println("===========================================");
+                System.out.print("메뉴 번호 입력 : ");
 
-            parameter.put("page", 0);
+                inputInt = intOrZero(sc.nextLine());
 
-            System.out.println("현재 등록된 플레이리스트가 없습니다.");
+                switch(inputInt){
+                    // 뒤로가기
+                    case 0:
+                        parameter.put("page", 0);
+                        break;
+                    // 리스트 추가
+                    case 1:
+                        parameter.put("page", 2);
+                        break;
+                    // 다른 번호
+                    default:
+                        System.out.println("올바른 메뉴 번호가 아님");
+                        flag = true;
+                }
 
-        }
+            }
+        } while(flag);
 
         return parameter;
     }
@@ -165,38 +170,38 @@ public class Views {
 
     }
 
-    public Map<String, Object> viewList(PlaylistTO pto, List<SongInfoTO> infos){
+    public Map<String, Object> viewList(PlaylistTO pto, List<SongInfoTO> infoList){
         Scanner sc = new Scanner(System.in);
 
         Map<String, Object> parameter = new HashMap<>();
 
-        int input = 0;
+        int inputInt = 0;
         boolean flag, flag2;
 
         do{
             flag = false;
 
-            System.out.println("============= " + pto.getLname() + " =============");
-            System.out.println("설명 : " + pto.getExp());
+            System.out.println("\n============= " + pto.getLname() + " =============");
+            if(!StringUtil.isBlank(pto.getExp())){
+                System.out.println("설명 : " + pto.getExp());
+            }
 
-            if(infos != null && !infos.isEmpty()){
-                for(int i = 0; i < infos.size(); i++){
-                    System.out.println("번호 " + (i + 1) + " : " + infos.get(i));
-                }
+            if(infoList != null && !infoList.isEmpty()){
+                printInfoList(infoList);
 
-                System.out.println("=========== 메뉴 ============");
+                System.out.println("===========================================");
                 System.out.println("0. 뒤로가기");
                 System.out.println("1. 노래 재생");
                 System.out.println("2. 노래 추가");
                 System.out.println("3. 노래 삭제");
-                System.out.println("=============================");
+                System.out.println("===========================================");
                 System.out.print("메뉴 번호 입력 : ");
 
                 try {
-                    input = sc.nextInt(); sc.nextLine();
-                    parameter.put("page", input);
+                    inputInt = intOrZero(sc.nextLine());
+                    parameter.put("page", inputInt);
 
-                    switch(input){
+                    switch(inputInt){
                         // 뒤로 가기
                         case 0:
                             break;
@@ -204,39 +209,61 @@ public class Views {
                         case 1:
                             do{
                                 flag2 = false;
-                                try {
-                                    System.out.print("1 - 전체 재생 / 2 - 선택 재생");
-                                    input = sc.nextInt(); sc.nextLine();
-                                    parameter.put("isAll", input);
 
-                                    if(input == 0){
-                                        flag = true;
+                                System.out.println("\n=================== 노래 재생 ===================");
+                                System.out.print("1 - 전체 재생 / 2 - 선택 재생 (취소-0)\n> ");
+                                inputInt = intOrZero(sc.nextLine());
 
-                                    }else if(input == 1){
-                                        System.out.println("1 - 순차 재생 / 2- 셔플 재생");
-                                        input = sc.nextInt(); sc.nextLine();
+                                parameter.put("isAll", inputInt);
 
-                                        parameter.put("isSequential", input);
+                                if(inputInt == 0){
+                                    System.out.println("취소");
+                                    flag = true;
 
-                                    }else if(input == 2){
-                                        do{
-                                            System.out.print("재생할 노래 번호 : ");
-                                            input = sc.nextInt(); sc.nextLine();
+                                }else if(inputInt == 1){
+                                    do{
+                                        System.out.println("\n=================== 노래 재생 - 전체 재생 ===================");
+                                        System.out.print("1 - 순차 / 2 - 셔플\n> ");
+                                        inputInt = intOrZero(sc.nextLine());
 
-                                            if(1 <= input && input <= infos.size()){
-                                                parameter.put("songIndex", input - 1);
-                                                break;
-                                            }else{
-                                                System.out.println("올바른 노래 번호를 입력해주세요.");
-                                            }
-                                        } while(true);
+                                        if(inputInt == 1 || inputInt == 2){
+                                            parameter.put("isSequential", inputInt);
+                                            break;
 
-                                    }else{
-                                        System.out.println("올바른 번호를 입력해주세요.");
-                                        flag2 = true;
-                                    }
-                                } catch (InputMismatchException e) {
-                                    System.out.println("올바른 번호를 입력해주세요.");
+                                        }else if(inputInt == 0){
+                                            System.out.println("취소");
+                                            flag2 = true;
+                                            break;
+
+                                        }else{
+                                            System.out.println("올바르지 않은 번호");
+
+                                        }
+                                    } while(true);
+
+                                }else if(inputInt == 2){
+                                    do{
+                                        System.out.println("\n=================== 노래 재생 - 선택 재생 ===================");
+                                        System.out.print("노래 번호 입력 : ");
+                                        inputInt = intOrZero(sc.nextLine());
+
+                                        if(1 <= inputInt && inputInt <= infoList.size()){
+                                            parameter.put("songIndex", inputInt - 1);
+                                            break;
+
+                                        }else if(inputInt == 0){
+                                            System.out.println("취소");
+                                            flag2 = true;
+                                            break;
+
+                                        }else{
+                                            System.out.println("올바르지 않은 번호");
+                                        }
+
+                                    } while(true);
+
+                                }else{
+                                    System.out.println("올바르지 않은 번호");
                                     flag2 = true;
                                 }
                             } while(flag2);
@@ -264,10 +291,10 @@ public class Views {
                 System.out.print("메뉴 번호 입력 : ");
 
                 try{
-                    input = sc.nextInt(); sc.nextLine();
-                    parameter.put("page", input);
+                    inputInt = sc.nextInt(); sc.nextLine();
+                    parameter.put("page", inputInt);
 
-                    switch(input){
+                    switch(inputInt){
                         // 뒤로 가기
                         case 0:
                             break;
@@ -420,6 +447,41 @@ public class Views {
         }
     }
 
+    // 문자열 정수로 변환 후 반환, 변환 불가 시 0 반환
+    public int intOrZero(String inputStr){
+        int result;
+
+        if(!StringUtil.isBlank(inputStr)){
+            try {
+                result = Integer.parseInt(inputStr);
+            } catch (NumberFormatException e) {
+                result = 0;
+            }
+        }else{
+            result = 0;
+        }
+
+        return result;
+    }
+
+    public void printPlList(List<PlaylistTO> plList){
+        PlaylistTO tmp = null;
+        for(int i = 0; i < plList.size(); i++){
+            tmp = plList.get(i);
+            System.out.println("[" + (i + 1) + "] " + tmp.getLname() + (!StringUtil.isBlank(tmp.getExp()) ? " (" + tmp.getExp() + ")" : ""));
+        }
+
+    }
+
+    public void printInfoList(List<SongInfoTO> infoList){
+        SongInfoTO tmp = null;
+        for(int i = 0; i < infoList.size(); i++){
+            tmp = infoList.get(i);
+            System.out.println("[" + (i + 1) + "] " + tmp.getSinger() + " - " + tmp.getTitle() + (!StringUtil.isBlank(tmp.getExp()) ? " (" + tmp.getExp() + ")" : ""));
+        }
+
+    }
+
     // Youtube 최상단 검색 결과 링크 크롤링
     public String crawl(String singer, String title){
 
@@ -434,7 +496,7 @@ public class Views {
 
             // Jsoup 라이브러리 이용 URL 요청에 대한 response를 받음
             // script를 통한 동적페이지 : user-agent 값 없을 시  미반환 > .userAgent(브라우저 정보) 사용
-            doc = Jsoup.connect("https://www.youtube.com/results?search_query=" + singer + "+-+" + title + "+Auto-generated")
+            doc = Jsoup.connect("https://www.youtube.com/results?search_query=" + singer + "+-+" + title + "+official")
                     .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36")
                     .get();
 

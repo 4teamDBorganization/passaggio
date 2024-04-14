@@ -25,6 +25,20 @@
             </foreach>
     </select>
 
+    <select id="selectSongsInContents2" parameterType="_int" resultType="SongInfoTO">
+        SELECT
+            si.seq AS seq,
+            singer,
+            title,
+            link
+        FROM
+            song_info AS si
+        JOIN
+            list_content AS lc
+        ON
+            lc.lseq = #{lseq} AND lc.sseq = si.seq
+    </select>
+
     <!-- useGeneratedKeys : 쿼리 실행 후 자동 생성 키 사용 여부 (auto_increment 값 등)
         >> 매개변수로 받은 객체를 통해 다시 돌려줌
         keyProperty : 자동 생성 키를 받을 필드(TO의 경우) 혹은 키 이름(Map의 경우) -->

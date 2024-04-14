@@ -18,11 +18,11 @@ public class Application {
             while(!isLoggedIn){
                 inputInt = 0;
 
-                System.out.println("========== 메뉴 관리 ==========");
+                System.out.println("\n=============== 메뉴 관리 ===============");
                 System.out.println("1. 로그인");
                 System.out.println("2. 회원가입");
                 System.out.println("9. 프로그램 종료");
-                System.out.println("==============================");
+                System.out.println("=========================================");
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
                 try {
@@ -49,12 +49,12 @@ public class Application {
             while (isLoggedIn){
                 inputInt = 0;
 
-                System.out.println("========== 메뉴 관리 ==========");
+                System.out.println("\n=============== 메뉴 관리 ===============");
                 System.out.println("1. 전체 플레이 리스트 조회");
                 System.out.println("2. 마이페이지");
                 System.out.println("8. 로그아웃");
                 System.out.println("9. 프로그램 종료");
-                System.out.println("==============================");
+                System.out.println("=========================================");
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
                 try {

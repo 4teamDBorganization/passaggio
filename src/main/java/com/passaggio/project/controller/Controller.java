@@ -49,22 +49,86 @@ public class Controller {
     }
 
     public void myPage() {
-        List<PlaylistTO> plList = plService.selectUserPlList(loggedInUserSeq);
+        boolean flag;
 
-        Map<String, Integer> parameter = views.myPage(plList);
-        int page = parameter.get("page");
+        do{
+            flag = false;
+            List<PlaylistTO> plList = plService.selectUserPlList(loggedInUserSeq);
 
-        switch (page) {
-            case 0: break;
-            case 1: registerList(); break;
-            case 2: deleteList();; break;
-            case 3: modifyList();; break;
-            case 4:
-                PlaylistTO pto = plList.get(parameter.get("selectedIndex"));
-                viewList(pto);
-                break;
-            default:
-        }
+            Map<String, Integer> parameter = views.myPage(plList);
+            int page = parameter.get("page");
+
+            switch (page) {
+                // 뒤로가기
+                case 0:
+                    flag = true;
+                    break;
+                // 리스트 조회
+                case 1:
+                    PlaylistTO pto = plList.get(parameter.get("selectedList"));
+                    viewList(pto, plList);
+                    break;
+                // 리스트 추가
+                case 2:
+                    registerList();
+                    break;
+                // 리스트 수정
+                case 3:
+                    modifyList();;
+                    break;
+                // 리스트 삭제
+                case 4:
+                    deleteList();;
+                    break;
+                default:
+            }
+        } while(!flag);
+    }
+
+    public void viewList(PlaylistTO pto, List<PlaylistTO> plList) {
+        boolean flag = false;
+
+        do{
+            flag = false;
+            Map<String, Object> parameter = new HashMap<>();
+            int lseq = pto.getSeq();
+
+/*
+            // 플레이리스트 seq를 통해 list_content 테이블에서 노래 seq 리스트 로드
+            List<Integer> contents = lcService.selectContentsByLseq(lseq);
+
+            List<SongInfoTO> infos = new ArrayList<>();
+            // 노래 seq 리스트를 통해 song_info 테이블에서 노래 정보 리스트 로드
+            if(contents != null && !contents.isEmpty()){
+                infos = siService.selectSongsInContents(contents);
+            }
+*/
+            List<SongInfoTO> infoList = siService.selectSongsInContents2(lseq);
+
+            parameter = views.viewList(pto, infoList);
+
+            switch((Integer)parameter.get("page")){
+                case 0:     // 0 - 뒤로가기 > do-while 탈출
+                    flag = true;
+                    break;
+
+                case 1:     // 1 - 노래재생
+                    parameter.put("infos", infoList);
+                    playSong(parameter);
+                    break;
+
+                case 2:     // 2 - 노래추가
+                    addSong(lseq);
+                    break;
+
+                case 3:     // 3 - 노래삭제
+//                    deleteSong();
+                    break;
+
+                default:
+            }
+        }while(!flag);
+
     }
 
     public void registerList() {
@@ -89,53 +153,10 @@ public class Controller {
 
     }
 
-    private void deleteList() {
-    }
-
     private void modifyList() {
     }
 
-    public void viewList(PlaylistTO pto) {
-        boolean flag = false;
-
-        do{
-            flag = false;
-            Map<String, Object> parameter = new HashMap<>();
-            int lseq = pto.getSeq();
-
-            // 플레이리스트 seq를 통해 list_content 테이블에서 노래 seq 리스트 로드
-            List<Integer> contents = lcService.selectContentsByLseq(lseq);
-
-            List<SongInfoTO> infos = new ArrayList<>();
-            // 노래 seq 리스트를 통해 song_info 테이블에서 노래 정보 리스트 로드
-            if(contents != null && !contents.isEmpty()){
-                infos = siService.selectSongsInContents(contents);
-            }
-
-            parameter = views.viewList(pto, infos);
-
-            switch((Integer)parameter.get("page")){
-                case 0:     // 0 - 뒤로가기 > do-while 탈출
-                    flag = true;
-                    break;
-
-                case 1:     // 1 - 노래재생
-                    parameter.put("infos", infos);
-                    playSong(parameter);
-                    break;
-
-                case 2:     // 2 - 노래추가
-                    addSong(lseq);
-                    break;
-
-                case 3:     // 3 - 노래삭제
-//                    deleteSong();
-                    break;
-
-                default:
-            }
-        }while(flag);
-        
+    private void deleteList() {
     }
 
     public void playSong(Map<String, Object> parameter){
@@ -160,7 +181,7 @@ public class Controller {
         // 중복 체크 : DB상에 같은 가수-제목 데이터 존재 여부
         SongInfoTO checkInfo = siService.selectSongByInfo(sto);
 
-        // 새로운 데이터(sseq = auto_increment 값) || 중복 데이터(sseq = 이미 존재하는 Info seq)
+        // 새로운 데이터 > (seq = auto_increment된 sseq값이 파라미터로 INSERT문에 전달한 sto의 seq에 저장됨)
         if(checkInfo == null){
             // song_info INSERT 결과 > flag 설정 (true - 비정상 / false - 정상)
             int result = siService.insertSongInfo(sto);
@@ -169,12 +190,12 @@ public class Controller {
             }else{
                 sseq = sto.getSeq();
             }
-
+        // 이미 DB에 저장된 노래 > (sseq = 이미 존재하는 Info seq)
         }else{
             sseq = checkInfo.getSeq();
         }
 
-        // song_info INSERT 성공 or 이미 존재하는 경우
+        // song_info INSERT 성공 & 이미 존재하는 경우
         // list_content INSERT
         if(!flag){
 

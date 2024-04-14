@@ -10,5 +10,7 @@ public interface SongInfoMapper {
 
     List<SongInfoTO> selectSongsInContents(List<Integer> contents);
 
+    List<SongInfoTO> selectSongsInContents2(int lseq);
+
     int insertSongInfo(SongInfoTO sto);
 }
