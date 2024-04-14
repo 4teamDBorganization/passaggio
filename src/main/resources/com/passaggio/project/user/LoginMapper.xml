@@ -52,4 +52,11 @@
     <select id="findUserIdByInfo" resultType="string">
         SELECT id FROM member WHERE seq = #{seq} AND nick = #{nick} AND gender = #{gender}
     </select>
+    <select id="FindAccountPwd" resultMap="signUpResultMap">
+    SELECT * FROM member WHERE seq = #{ seq }
+                           AND id = #{ id }
+    </select>
+    <select id="findUserPwdByInfo" resultType="string">
+    SELECT pwd FROM member WHERE seq = #{seq} AND id = #{id}
+    </select>
 </mapper>
