@@ -1,7 +1,7 @@
 package com.passaggio.project.view.lostaccount;
 
 import com.passaggio.project.controller.LostController;
-import com.passaggio.project.user.Delay;
+import com.passaggio.project.delay.Delay;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.passaggio.project.user;
+package com.passaggio.project.delay;
 
 public class Delay {
     public static void countdelay(int waitseconds) {

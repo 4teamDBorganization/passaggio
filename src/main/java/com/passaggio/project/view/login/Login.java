@@ -18,11 +18,15 @@ import java.util.Scanner;
                 Scanner sc = new Scanner(System.in);
 
                 String id;
+                String pwd;
 
                 //아이디 입력 및 아이디 일치 확인
                 do {
                     System.out.print("아이디를 입력해주세요: ");
                     id = sc.nextLine();
+                    System.out.print("비밀번호를 입력하세요: ");
+                    pwd = sc.nextLine();
+
                     if (!(LoginController.matchId(id))) {
                         System.out.println("================================");
                         System.out.println("아이디가 일치하지 않습니다. 다시 입력해주세요");
@@ -30,8 +34,6 @@ import java.util.Scanner;
                     }
                 } while (!LoginController.matchId(id)); // 일치하지 않는 아이디가 입력될 경우 계속 실행
 
-                System.out.print("비밀번호를 입력하세요: ");
-                String pwd = sc.nextLine();
 
                 Map<String, String> parameter = new HashMap<>();
 

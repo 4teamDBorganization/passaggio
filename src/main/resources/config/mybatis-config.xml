@@ -5,6 +5,13 @@
 
 <configuration>
     <properties resource="config/connection-info.properties"/>
+
+    <typeAliases>
+        <typeAlias type="com.passaggio.project.model.playlist.PlaylistTO" alias="PlaylistTO"/>
+        <typeAlias type="com.passaggio.project.model.songinfo.SongInfoTO" alias="SongInfoTO"/>
+        <typeAlias type="com.passaggio.project.model.listcontent.ListContentTO" alias="ListContentTO"/>
+    </typeAliases>
+
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
@@ -19,5 +26,8 @@
 
     <mappers>
         <mapper resource="com/passaggio/project/user/LoginMapper.xml"/>
+        <mapper resource="com/passaggio/project/mapper/PlaylistMapper.xml" />
+        <mapper resource="com/passaggio/project/mapper/SongInfoMapper.xml" />
+        <mapper resource="com/passaggio/project/mapper/ListContentMapper.xml" />
     </mappers>
 </configuration>

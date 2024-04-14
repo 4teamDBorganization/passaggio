@@ -24,7 +24,7 @@ public class Template {
                 inputStream = Resources.getResourceAsStream(resource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Template.getSqlSession() Error : " + e.getMessage());
             }
         }
         return sqlSessionFactory.openSession(false);
