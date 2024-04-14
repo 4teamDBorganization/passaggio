@@ -31,4 +31,12 @@ public class SignUpService {
             return existNick != null;
         }
     }
+
+    public String MySeq(String id) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
+            String MS = mapper.yourSeq(id);
+            return MS;
+        }
+    }
 }
