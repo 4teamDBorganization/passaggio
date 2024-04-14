@@ -16,6 +16,10 @@ public class LostController {
         return LostAccountService.findmyid(seq, nick, gender);
     }
 
+    public static boolean findpwd(int seq, String id) {
+        return LostAccountService.findmypwd(seq, id);
+    }
+
 
 }
 
