@@ -1,4 +1,4 @@
-package com.passaggio.project.Application;
+package com.passaggio.project.application;
 
 import com.passaggio.project.controller.LoginController;
 import com.passaggio.project.controller.SignUpController;

@@ -42,5 +42,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-## properties ###
-src/main/resources/config/connection-info.properties/
+### properties ###
+src/main/resources/config/connection-info.properties
