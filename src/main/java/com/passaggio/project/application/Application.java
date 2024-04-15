@@ -6,6 +6,7 @@ import com.passaggio.project.myPage.MypageService;
 import com.passaggio.project.view.login.Login;
 import com.passaggio.project.view.lostaccount.LostAccount;
 import com.passaggio.project.view.signup.SignUp;
+import com.passaggio.project.view.withdraw.Withdraw;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -18,6 +19,7 @@ public class Application {
         LoginController loginController = new LoginController();
         SignUpController signUpController = new SignUpController();
         MypageService mypageService = new MypageService();
+        Withdraw withdraw = new Withdraw();
 
         boolean ing = true;
         Scanner sc = new Scanner(System.in);
@@ -30,7 +32,8 @@ public class Application {
             System.out.println("1. 예(로그인 창으로 이동됩니다.)");
             System.out.println("2. 아니요(회원가입으로 이동됩니다.)");
             System.out.println("3. 아이디와 비밀번호를 잊었습니다.");
-            System.out.println("4. 종료하기");
+            System.out.println("4. 회원 탈퇴 (아이디 확인 후 탈퇴됩니다.)");
+            System.out.println("5. 종료하기");
             System.out.println("================================");
             System.out.print("--> ");
             int choose = sc.nextInt();
@@ -49,7 +52,9 @@ public class Application {
             }else if(choose == 3){
                 LostAccount lostAccount = new LostAccount();
                 lostAccount.findaccount();
-            }else if (choose == 4){
+            }else if (choose == 4) {
+                withdraw.withdrawal();
+            }else if (choose == 5){
                 System.out.println("프로그램을 종료합니다.");
                 exit(0);
             }
