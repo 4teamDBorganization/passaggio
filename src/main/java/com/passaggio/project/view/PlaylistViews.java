@@ -1,9 +1,6 @@
 package com.passaggio.project.view;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.stream.MalformedJsonException;
 import com.passaggio.project.model.listcontent.ListContentTO;
 import com.passaggio.project.model.playlist.PlaylistTO;
@@ -431,9 +428,6 @@ public class PlaylistViews {
         sto.setTitle(title.strip());
         sto.setExp( (exp != null && !exp.isBlank()) ? exp.strip() : null );
 
-        System.out.println("최종 작성");
-        System.out.println(sto);
-
         sto.setLink(crawl(sto.getSinger(), sto.getTitle()));
 
         return sto;
@@ -610,7 +604,7 @@ public class PlaylistViews {
             flag = false;
             System.out.println("\n============= 플레이리스트 삭제 =============");
             System.out.println("[이름] : " + pto.getLname());
-            System.out.println("[설명] : " + pto.getExp());
+            System.out.println("[설명] : " + (pto.getExp() != null ? pto.getExp() : "[없음]"));
             System.out.println("[곡 개수] : " + infoList.size());
             if(!infoList.isEmpty()){
                 System.out.println("[곡 정보]");
@@ -758,7 +752,6 @@ public class PlaylistViews {
             // script 태그 데이터들만 받음
             scripts = doc.getElementsByTag("script");
 
-            System.out.println(scripts.size());
             // 주요 데이터는 34번째 script 태그 내부에 존재
             Element element = scripts.get(34);
             String data = element.html();
@@ -795,7 +788,7 @@ public class PlaylistViews {
                 firstIndex++;
             } while(value == null);
 
-        } catch (MalformedJsonException e){
+        } catch (JsonSyntaxException e){
             System.out.println("[Error] : " + e.getMessage());
         } catch (IOException e) {
             System.out.println("[Error] : " + e.getMessage());
