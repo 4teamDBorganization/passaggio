@@ -51,9 +51,22 @@
 - 버전 및 이슈관리 : Github, Github Issues, Github Project
 - 팀 협업 : Notion, Discord
 
+<br>
+
+### 🌳브랜치 전략
+- main 브랜치와 feature 보조 브랜치를 운용했습니다.
+- **main** 브랜치는 배포 단계에서만 사용하는 브랜치입니다.
+- **feature** 브랜치는 각 구현 단위로 구분하여 사용했습니다.
+- **feature** 브랜치를 자기 브랜치 커밋용 및 테스트용으로 이용했습니다.
+      
+
 <br><br>
 
 ## 🧱프로젝트 구조
+...
+
+...
+
 
 
 
