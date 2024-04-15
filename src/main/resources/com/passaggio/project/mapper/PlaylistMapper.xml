@@ -4,6 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.passaggio.project.mapper.PlaylistMapper">
 
+    <!--전체 플레이리스트 조회-->
     <select id="selectAllList" resultType="PlaylistTO">
         SELECT
             *
@@ -11,6 +12,7 @@
             playlist;
     </select>
 
+    <!--로그인 중인 회원 플레이리스트 조회-->
     <select id="selectUserPlList" resultType="PlaylistTO" parameterType="_int">
         SELECT
             *
@@ -20,6 +22,7 @@
             mseq = #{mseq}
     </select>
 
+    <!--플레이리스트 생성-->
     <insert id="insertPlaylist" parameterType="PlaylistTO">
         INSERT INTO
             playlist
@@ -31,6 +34,18 @@
         )
     </insert>
 
+    <!--플레이리스트 수정-->
+    <update id="modifyPlaylist" parameterType="PlaylistTO">
+        UPDATE
+            playlist
+        SET
+            lname = #{lname},
+            exp = #{exp}
+        WHERE
+            seq = #{seq}
+    </update>
+
+    <!--플레이리스트 삭제-->
     <delete id="deletePlaylist" parameterType="_int">
         DELETE FROM
             playlist

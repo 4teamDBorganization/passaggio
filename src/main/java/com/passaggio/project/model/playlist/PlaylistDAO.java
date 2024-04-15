@@ -26,4 +26,16 @@ public class PlaylistDAO {
 
         return mapper.insertPlaylist(pto);
     }
+
+    public int modifyPlaylist(SqlSession sqlSession, PlaylistTO pto){
+        mapper = sqlSession.getMapper(PlaylistMapper.class);
+
+        return mapper.modifyPlaylist(pto);
+    }
+
+    public int deletePlaylist(SqlSession sqlSession, int lseq){
+        mapper = sqlSession.getMapper(PlaylistMapper.class);
+
+        return mapper.deletePlaylist(lseq);
+    }
 }

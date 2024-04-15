@@ -30,7 +30,7 @@ public class Application {
         //만약 1번을 선택하면 로그인창으로 이동하게
         //2번을 선택한다면 회원가입창으로
         while (ing) {
-            System.out.println("================================");
+            System.out.println("\n================================");
             System.out.println("계정이 있으십니까?");
             System.out.println("1. 예(로그인 창으로 이동됩니다.)");
             System.out.println("2. 아니요(회원가입으로 이동됩니다.)");
@@ -47,7 +47,8 @@ public class Application {
                 Map<String, String> loginInfo = loginService.inputMenu();
                 loginController.goLogin(loginInfo);
                 String userId = loginInfo.get("userId");
-                mypageService.showMypage(userId);
+                String mseq = loginInfo.get("mseq");
+                mypageService.showMypage(mseq, userId);
 //                ing = false;
             } else if (choose == 2) {
                 System.out.println("회원 가입을 시작합니다.");
@@ -60,7 +61,7 @@ public class Application {
                 withdraw.withdrawal();
             }
             else if(choose == 5) {
-                System.out.println("================================");
+                System.out.println("\n================================");
                 System.out.println("비회원으로 이용하기를 선택하셨습니다.");
                 System.out.println("비회원으로 이용 시에는 많은 기능들을 이용하실 수 없습니다.");
                 System.out.println("그래도 사용하시겠습니까?");

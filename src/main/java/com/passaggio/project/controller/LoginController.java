@@ -2,6 +2,7 @@ package com.passaggio.project.controller;
 
 import com.passaggio.project.model.login.LoginService;
 import com.passaggio.project.delay.Delay;
+import com.passaggio.project.model.signup.SignUpService;
 import com.passaggio.project.view.login.Login;
 
 import java.util.Map;
@@ -10,10 +11,12 @@ public class LoginController {
 
     public final Login login;
     public final LoginService loginService;
+    public final SignUpService signUpService;
 
     public LoginController(){
         login = new Login();
         loginService = new LoginService();
+        signUpService = new SignUpService();
     }
 
     //아이디 일치 확인
@@ -31,8 +34,10 @@ public class LoginController {
         loginService.gologin(userId, userPwd);
 
         String userNickName = loginService.WhatIsNickName(userId);
+        String mseq = signUpService.MySeq(userId);
 
-
+        parameter.put("mseq", mseq);
+        
         System.out.println();
         System.out.println("================================");
         System.out.println("로그인 되었습니다.");
