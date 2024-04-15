@@ -96,7 +96,74 @@
 
 ## 🧱프로젝트 구조
 ...
-
+📦src
+ ┗ 📂main
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂passaggio
+ ┃ ┃ ┃ ┃ ┗ 📂project
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂application
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Application.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Template.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Controller.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawController.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂delay
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Delay.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂model
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂listcontent
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentDAO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ListContentTO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LoginService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂playlist
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistDAO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistTO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpDTO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUpService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂songinfo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoDAO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoTO.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂withdraw
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawService.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂myPage
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MypageService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NoneUserpage.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂view
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Login.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂lostaccount
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostAccount.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LostAccountService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUp.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂withdraw
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Withdraw.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistViews.java
+ ┃ ┗ 📂resources
+ ┃ ┃ ┣ 📂com
+ ┃ ┃ ┃ ┗ 📂passaggio
+ ┃ ┃ ┃ ┃ ┗ 📂project
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂mapper
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.xml
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.xml
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.xml
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.xml
+ ┃ ┃ ┗ 📂config
+ ┃ ┃ ┃ ┗ 📜mybatis-config.xml
 ...
 
 
