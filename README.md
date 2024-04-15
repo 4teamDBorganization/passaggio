@@ -6,8 +6,10 @@
 
 ## 🎤프로젝트 소개
 - 개인 플레이리스트 파일을 만들고, 사용자가 직접 노래를 직접 설정하여 만드는 플레이리스트
-- 유튜브 링크를 통해서 노래 감상가능
-- 다른 사용자와 서로의 플레이리스트 공유 가능
+- 로그인을 통한 마이 플레이리스트 관리 가능
+- 마이페이지에서 새로운 노래 등록 및 조회 가능
+- 유튜브 링크를 통해서 노래 감상 가능
+- 전체 플레이리스트 페이지에서 다른 사용자와 서로의 플레이리스트 공유 가능
 
 
 
@@ -30,15 +32,29 @@
 
 <p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/c6e4e3fb-e7f5-40e1-8e4a-1b565b41a0bc" height=650 width=1000></p>
 
+## 🗓️개발 과정
+<p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/3dc9c4bd-0109-4e7a-a948-5ef7db6a8f1e" height=540 width=540></p>
 
+- 기획하기 : NOTION, DISCORD
+- 개념적 설계 ERD : DIAGRAMS DRAW_IO
+- 논리적 설계 스키마 : ERDCLOUD
+- 코드 작성 : INTELLIJ
 
 
 <br><br>
 ## 💻개발환경
-- Back-end : IntelliJ IDEA, Java 17, mySQL, MyBatis
+<p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/4ae64f95-9d4d-42ad-b575-d48b2cc50f7f" height=400 width=600></p>
+
+
+
+- Back-end : IntelliJ IDEA, Java 17, mySQL, MyBatis, ERD Croud, Diagrams Draw_IO
 - 버전 및 이슈관리 : Github, Github Issues, Github Project
+- 팀 협업 : Notion, Discord
 
 <br><br>
+
+## 🧱프로젝트 구조
+
 
 
 ## 📌개념설계 ERD
