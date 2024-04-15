@@ -33,7 +33,7 @@
     </select>
     <!--비밀번호 일치 체크-->
     <select id="whatIsPwd" resultType="String">
-        SELECT pwd FROM member WHERE pwd = #{ pwd }
+        SELECT id, pwd FROM member WHERE id = #{id} and pwd = #{pwd}
     </select>
     <!--닉네임 중복 체크 sql-->
     <select id="whatIsNick" resultType="String">
