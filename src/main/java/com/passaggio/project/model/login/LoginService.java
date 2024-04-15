@@ -17,11 +17,10 @@ public class LoginService {
         }
     }
     //비밀번호 일치
-    public static boolean isPwInUse(String pwd) {
+    public static boolean isPwInUse(String id,String pwd ) {
         try (SqlSession sqlSession = getSqlSession()) {
             LoginMapper mapper = sqlSession.getMapper(LoginMapper.class);
-            String existPwd = mapper.whatIsPwd(pwd);
-            return existPwd != null;
+            return mapper.whatIsPwd(id, pwd) != null;
         }
     }
 
