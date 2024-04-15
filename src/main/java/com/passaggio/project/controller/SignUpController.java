@@ -45,19 +45,13 @@ public class SignUpController {
 
         String yourseq = signUpService.MySeq(userId);
         System.out.println();
-        System.out.println("================================");
-        System.out.println("회원가입이 완료되었습니다.");
+        System.out.println("=============== <회원가입 완료> ===============");
         System.out.println("당신의 고유 번호는 " + "'" + yourseq + "'" + "입니다.");
         System.out.println("나중에 아이디나 비밀번호를 찾을 때 사용되니");
         System.out.println("메모해두어 아이디나 비밀번호를 찾을 때 어려움이 없길 바랍니다.");
-        System.out.println("================================");
-        Delay.countdelay(5000);
-
         System.out.println("잠시 후에 처음 화면으로 돌아갑니다.");
-        System.out.println("================================");
-        System.out.println();
+        System.out.println("=============================================");
         Delay.countdelay(3000);
-
     }
 
 }

@@ -34,7 +34,7 @@ public class PlaylistViews {
         boolean flag;
         do{
             flag = false;
-            System.out.println("\n============= 전체 플레이리스트 조회 =============");
+            System.out.println("\n============= 전체 플레이리스트 =============");
             if(plList != null){
                 printAllPlList(mseq, plList);
                 System.out.println("===========================================");
@@ -54,7 +54,7 @@ public class PlaylistViews {
 
             }else{
 
-                System.out.println("\n============= 전체 플레이 리스트 조회 =============");
+                System.out.println("\n=============== 전체 플레이 리스트 조회 ===============");
                 System.out.println("현재 등록된 플레이리스트가 없습니다.");
 
             }
@@ -169,7 +169,7 @@ public class PlaylistViews {
         do{
             flag = false;
 
-            System.out.println("\n============= " + pto.getLname() + " =============");
+            System.out.println("\n=============== [" + pto.getLname() + "] ===============");
             if(!StringUtil.isBlank(pto.getExp())){
                 System.out.println("설명 : " + pto.getExp());
             }

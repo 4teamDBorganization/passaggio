@@ -21,28 +21,31 @@ public class NoneUserpage {
         Scanner sc = new Scanner(System.in);
 
         do {
-            System.out.println("여기는 비회원 페이지입니다.");
             System.out.println("1. 전체 플레이리스트 확인하기");
             System.out.println("2. 마이 플레이리스트 확인하기");
             System.out.println("3. 처음으로 돌아가기");
+            System.out.println("=============================================");
+            System.out.print("--> ");
             int noneuserchoice = sc.nextInt();
             if (noneuserchoice == 1) {
-                System.out.println("=====<전체플레이 리스트>=====");
                 List<PlaylistTO> pllt = playlistService.selectAllList();
+                System.out.println("\n================ <전체플레이리스트> ================");
                 for(PlaylistTO p : pllt){
-                    System.out.println("================================");
                     System.out.println("플레이리스트 이름 : " + p.getLname() + " 플레이리스트 설명 : " + p.getExp());
                 }
-                System.out.println("================================");
+                System.out.println("=============================================");
 
             } else if (noneuserchoice == 2) {
+                System.out.println("\n============== <마이플레이리스트> ==============");
                 System.out.println("이 기능은 회원가입 이후에 사용 가능한 기능입니다.");
                 System.out.println("회원 가입하시겠습니까?");
+                System.out.println("=============================================");
                 System.out.println("1. 예");
                 System.out.println("2. 아니요");
+                System.out.println("=============================================");
+                System.out.print("--> ");
                 int YandN = sc.nextInt();
                 if (YandN == 1) {
-                    System.out.println("회원 가입을 시작합니다.");
                     Map<String, String> signUpInfo = SignUp.inputMenu();
                     signUpController.registerSignUp(signUpInfo);
                 } else if (YandN == 2) {
