@@ -20,7 +20,9 @@ public class LoginController {
     public static boolean matchId(String id) {
         return LoginService.isIdInUse(id);
     }
-
+    //비밀번호 일치 확인
+    public static boolean matchPwd(String id, String pwd) {return LoginService.isPwInUse(pwd);
+    }
     public void goLogin(Map<String, String> parameter){
 
         String userId = parameter.get("userId");
