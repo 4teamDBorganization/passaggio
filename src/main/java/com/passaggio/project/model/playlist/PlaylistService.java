@@ -48,4 +48,36 @@ public class PlaylistService {
 
         return result;
     }
+
+    public int modifyPlaylist(PlaylistTO pto){
+        SqlSession sqlSession = Template.getSqlSession();
+
+        int result = dao.modifyPlaylist(sqlSession, pto);
+
+        if(result == 1){
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
+
+    public int deletePlaylist(int lseq){
+        SqlSession sqlSession = Template.getSqlSession();
+
+        int result = dao.deletePlaylist(sqlSession, lseq);
+
+        if(result == 1){
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result;
+    }
 }

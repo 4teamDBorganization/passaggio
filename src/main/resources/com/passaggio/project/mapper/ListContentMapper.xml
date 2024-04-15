@@ -18,4 +18,19 @@
         VALUES
             (#{lseq}, #{sseq})
     </insert>
+
+    <delete id="deleteContent" parameterType="ListContentTO">
+        DELETE FROM
+            list_content
+        WHERE
+            lseq = #{ lseq }
+            AND sseq = #{ sseq }
+    </delete>
+
+    <delete id="deleteContents" parameterType="_int">
+        DELETE FROM
+        list_content
+        WHERE
+        lseq = #{ lseq }
+    </delete>
 </mapper>

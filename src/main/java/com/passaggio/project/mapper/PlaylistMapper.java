@@ -15,6 +15,9 @@ public interface PlaylistMapper {
     // 플레이리스트 생성
     int insertPlaylist(PlaylistTO pto);
 
+    // 플레이리스트 수정
+    int modifyPlaylist(PlaylistTO pto);
+
     // 플레이리스트 삭제
     int deletePlaylist(int seq);
 

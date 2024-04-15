@@ -35,4 +35,32 @@ public class ListContentService {
 
         return result;
     }
+
+    public int deleteContent(ListContentTO lto){
+        SqlSession sqlSession = Template.getSqlSession();
+
+        int result = dao.deleteContent(sqlSession, lto);
+
+        if(result == 1){
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        return result;
+    }
+
+    public int deleteContents(int lseq, int count){
+        SqlSession sqlSession = Template.getSqlSession();
+
+        int result = dao.deleteContents(sqlSession, lseq);
+
+        if(result == count){
+            sqlSession.commit();
+        }else{
+            sqlSession.rollback();
+        }
+
+        return result;
+    }
 }

@@ -1,10 +1,11 @@
 package com.passaggio.project.application;
 
 import com.passaggio.project.controller.Controller;
+import org.jsoup.internal.StringUtil;
 
 import java.util.*;
 
-public class Application {
+public class Application1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -16,23 +17,15 @@ public class Application {
 
         do{
             while(!isLoggedIn){
-                inputInt = 0;
 
-                System.out.println("\n=============== 메뉴 관리 ===============");
+                System.out.println("\n=============== 메인 메뉴 ===============");
                 System.out.println("1. 로그인");
                 System.out.println("2. 회원가입");
                 System.out.println("9. 프로그램 종료");
                 System.out.println("=========================================");
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
-                try {
-                    inputInt = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    System.out.println("잘못된 관리 번호입니다.");
-                    continue;
-                } finally {
-                    sc.nextLine();
-                }
+                inputInt = intOrZero(sc.nextLine());
 
                 switch (inputInt) {
                     case 1:
@@ -47,9 +40,8 @@ public class Application {
             }
 
             while (isLoggedIn){
-                inputInt = 0;
 
-                System.out.println("\n=============== 메뉴 관리 ===============");
+                System.out.println("\n=============== 메인 메뉴 ===============");
                 System.out.println("1. 전체 플레이 리스트 조회");
                 System.out.println("2. 마이페이지");
                 System.out.println("8. 로그아웃");
@@ -57,12 +49,7 @@ public class Application {
                 System.out.println("=========================================");
                 System.out.print("메뉴 관리 번호를 입력하세요 : ");
 
-                try {
-                    inputInt = sc.nextInt();
-                } catch (InputMismatchException e) {
-                    System.out.println("잘못된 관리 번호입니다.");
-                    continue;
-                }
+                inputInt = intOrZero(sc.nextLine());
 
                 switch (inputInt) {
                     case 1:
@@ -98,5 +85,22 @@ public class Application {
         parameter.put("pwd", pwd);
 
         return parameter;
+    }
+
+    // 문자열 정수로 변환 후 반환, 변환 불가 시 0 반환
+    public static int intOrZero(String inputStr){
+        int result;
+
+        if(!StringUtil.isBlank(inputStr)){
+            try {
+                result = Integer.parseInt(inputStr);
+            } catch (NumberFormatException e) {
+                result = 0;
+            }
+        }else{
+            result = 0;
+        }
+
+        return result;
     }
 }
