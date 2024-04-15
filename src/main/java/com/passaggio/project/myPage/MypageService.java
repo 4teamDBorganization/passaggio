@@ -7,6 +7,8 @@ import com.passaggio.project.delay.Delay;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class MypageService {
         public void showMypage(String userId) {
             Scanner sc = new Scanner(System.in);
@@ -49,7 +51,7 @@ public class MypageService {
                         sc.close();
                         System.out.println("메뉴 관리 프로그램을 종료합니다.");
                         Delay.countdelay(1000);
-                        return;
+                        exit(0);
                     default:
                         System.out.println("잘못된 관리 번호입니다.");
                         break;
