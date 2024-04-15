@@ -1,33 +1,32 @@
 package com.passaggio.project.common;
 
+import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public class Template {
-
     private static SqlSessionFactory sqlSessionFactory;
 
-    private Template(){}
+    public static SqlSession getSqlSession() {
+        if (sqlSessionFactory == null) {
+            String resource = "config/mybatis-config.xml";
 
-    public static SqlSession getSqlSession(){
-
-        if(sqlSessionFactory == null){
-
+            InputStream inputStream = null;
             try {
-                InputStream is = Resources.getResourceAsStream("config/mybatis-config.xml");
-
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+                inputStream = Resources.getResourceAsStream(resource);
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
-                System.out.println("Template.getSqlSession() Error : " + e.getMessage());;
+                System.out.println("Template.getSqlSession() Error : " + e.getMessage());
             }
-
         }
-
         return sqlSessionFactory.openSession(false);
     }
 }
