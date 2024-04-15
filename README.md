@@ -95,76 +95,76 @@
 <br><br>
 
 ## 🧱프로젝트 구조
-...
-📦src
- ┗ 📂main
- ┃ ┣ 📂java
- ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┗ 📂passaggio
- ┃ ┃ ┃ ┃ ┗ 📂project
- ┃ ┃ ┃ ┃ ┃ ┣ 📂application
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Application.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂common
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Template.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Controller.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawController.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂delay
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Delay.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂model
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂listcontent
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentDAO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ListContentTO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LoginService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂playlist
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistDAO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistTO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpDTO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUpService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂songinfo
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoDAO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoTO.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂withdraw
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawService.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂myPage
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MypageService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NoneUserpage.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📂view
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Login.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂lostaccount
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostAccount.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LostAccountService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUp.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂withdraw
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Withdraw.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistViews.java
- ┃ ┗ 📂resources
- ┃ ┃ ┣ 📂com
- ┃ ┃ ┃ ┗ 📂passaggio
- ┃ ┃ ┃ ┃ ┗ 📂project
- ┃ ┃ ┃ ┃ ┃ ┗ 📂mapper
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.xml
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.xml
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.xml
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.xml
- ┃ ┃ ┗ 📂config
- ┃ ┃ ┃ ┗ 📜mybatis-config.xml
-...
+
+📦src <br>
+ ┗ 📂main <br>
+ ┃ ┣ 📂java <br>
+ ┃ ┃ ┗ 📂com <br>
+ ┃ ┃ ┃ ┗ 📂passaggio <br>
+ ┃ ┃ ┃ ┃ ┗ 📂project <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂application <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Application.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂common <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Template.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Controller.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginController.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostController.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpController.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawController.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂delay <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Delay.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂model <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂listcontent <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentDAO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ListContentTO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LoginService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂playlist <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistDAO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistTO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SignUpDTO.java <br> 
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUpService.java <br> 
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂songinfo <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoDAO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SongInfoService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoTO.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂withdraw <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WithdrawService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂myPage <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MypageService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NoneUserpage.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂view <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂login <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Login.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂lostaccount <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LostAccount.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LostAccountService.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂signup <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignUp.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂withdraw <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Withdraw.java <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PlaylistViews.java <br>
+ ┃ ┗ 📂resources <br>
+ ┃ ┃ ┣ 📂com <br>
+ ┃ ┃ ┃ ┗ 📂passaggio <br>
+ ┃ ┃ ┃ ┃ ┗ 📂project <br>
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂mapper <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ListContentMapper.xml <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginMapper.xml <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PlaylistMapper.xml <br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SongInfoMapper.xml <br>
+ ┃ ┃ ┗ 📂config <br>
+ ┃ ┃ ┃ ┗ 📜mybatis-config.xml <br>
+
 
 
 
