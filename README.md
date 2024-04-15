@@ -1,6 +1,6 @@
 ## 🎤passaggio
 # 🎵개인 플레이리스트 만들기!
-![플레이리스트 사진](https://github.com/4teamDBorganization/passaggio/assets/105586878/a844b432-1010-49e5-93e2-a7c8a8f4bcaa)
+<p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/a844b432-1010-49e5-93e2-a7c8a8f4bcaa" height=800 width=800></p>
 
 <br><br>
 
@@ -23,16 +23,43 @@
 | **도영익** | **배민서** | **안효준** | **이수빈** |
 | :------: |  :------: | :------: | :------: |
 |[<img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/f1af7145-4133-4ac3-a2b5-9dcf5f27467a" height=150 width=150> <br/> @do0ik](https://github.com/do0ik)|[<img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/e77503db-a0d0-454b-846f-f48b74992bac" height=150 width=150> <br/> @Baeminseo](https://github.com/Baeminseo) |[<img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/cd06b1de-bc1a-4d55-8ef9-a428b9f59b16" width="150" height="150"/> <br/> @hyojunahn111](https://github.com/hyojunahn111) | [<img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/10bb1a42-1ab8-4a61-95a3-ba401b5845df" height=150 width=150><br/> @joy:)](https://github.com/sb-77) |
-
 </div>
+
+### 🧑‍💻역할 분담
+
+#### 도영익
+- 플레이리스트, 노래부분
+
+    
+#### 배민서
+- 회원가입, 로그인
+
+
+#### 안효준
+- 회원가입, 로그인
+
+#### 이수빈 
+- 플레이리스트, 노래부분
+    
+<br>
+
+
 
 <br><br>
 
 ## 🗓️파사지오 프로젝트 타임라인
 
+<br><br> 
+
 <p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/c6e4e3fb-e7f5-40e1-8e4a-1b565b41a0bc" height=650 width=1000></p>
 
+<br><br> 
+
 ## 🗓️개발 과정
+
+
+<br><br> 
+
 <p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/3dc9c4bd-0109-4e7a-a948-5ef7db6a8f1e" height=540 width=540></p>
 
 - 기획하기 : NOTION, DISCORD
@@ -45,13 +72,16 @@
 
 <br><br>
 ## 💻개발환경
+<br><br> 
+
 <p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/4ae64f95-9d4d-42ad-b575-d48b2cc50f7f" height=400 width=600></p>
 
 
-
+<br><br> 
 - Back-end : IntelliJ IDEA, Java 17, mySQL, MyBatis, ERD Croud, Diagrams Draw_IO
 - 버전 및 이슈관리 : Github, Github Issues, Github Project
-- 팀 협업 : Notion, Discord
+<div align=left><h4>협업 툴</h4></div>
+<div align=left><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"/><a href="https://www.notion.so/e9077bdb30f14515bc1c52f838aa2360?pvs=4"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"/></a><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/></div>
 
 <br>
 
@@ -71,6 +101,7 @@
 
 
 
+<br><br> 
 
 ## 📌개념설계 ERD
 <p align="center"><img src="https://github.com/4teamDBorganization/passaggio/assets/105586878/1c4069fa-834c-42e3-a2fe-b23f266bc741" height=1200 width=850></p>
