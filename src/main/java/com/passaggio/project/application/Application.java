@@ -30,7 +30,7 @@ public class Application {
         //만약 1번을 선택하면 로그인창으로 이동하게
         //2번을 선택한다면 회원가입창으로
         while (ing) {
-            System.out.println("\n=============================================");
+            System.out.println("\n============ <나만의 플레이리스트> ============");
             System.out.println("1. 로그인");
             System.out.println("2. 회원가입");
             System.out.println("3. 아이디/비밀번호 찾기");

@@ -38,7 +38,6 @@ public class Withdraw {
             String confirm = sc.next();
             if (confirm.equalsIgnoreCase("Y")) {
                 WithdrawController.deleteUser(id);
-                System.out.println("회원 탈퇴가 완료되었습니다.");
                 Delay.countdelay(1000);
             } else if (confirm.equalsIgnoreCase("N")) {
                 System.out.println("회원 탈퇴를 취소합니다.");

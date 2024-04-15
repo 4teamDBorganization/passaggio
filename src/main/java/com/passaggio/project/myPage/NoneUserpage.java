@@ -6,6 +6,7 @@ import com.passaggio.project.model.playlist.PlaylistService;
 import com.passaggio.project.model.playlist.PlaylistTO;
 import com.passaggio.project.model.signup.SignUpService;
 import com.passaggio.project.view.signup.SignUp;
+import org.jsoup.internal.StringUtil;
 
 import javax.swing.text.View;
 import java.util.List;
@@ -30,8 +31,10 @@ public class NoneUserpage {
             if (noneuserchoice == 1) {
                 List<PlaylistTO> pllt = playlistService.selectAllList();
                 System.out.println("\n================ <전체플레이리스트> ================");
-                for(PlaylistTO p : pllt){
-                    System.out.println("플레이리스트 이름 : " + p.getLname() + " 플레이리스트 설명 : " + p.getExp());
+                PlaylistTO tmp = null;
+                for(int i = 0; i < pllt.size(); i++){
+                    tmp = pllt.get(i);
+                    System.out.println("[" + (i + 1) + "] " + tmp.getLname() + (!StringUtil.isBlank(tmp.getExp()) ? " (" + tmp.getExp() + ")" : ""));
                 }
                 System.out.println("=============================================");
 
@@ -48,6 +51,7 @@ public class NoneUserpage {
                 if (YandN == 1) {
                     Map<String, String> signUpInfo = SignUp.inputMenu();
                     signUpController.registerSignUp(signUpInfo);
+                    break;
                 } else if (YandN == 2) {
                     System.out.println("뒤로 돌아갑니다");
                     Delay.countdelay(1000);
