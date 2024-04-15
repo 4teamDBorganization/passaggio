@@ -66,4 +66,8 @@
     <select id="yourSeq" resultType="string">
         SELECT seq FROM member WHERE id = #{id}
     </select>
+    <!--회원 탈퇴-->
+    <delete id="deleteUser" parameterType="java.lang.String">
+        DELETE FROM member WHERE id = #{id}
+    </delete>
 </mapper>

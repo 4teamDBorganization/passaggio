@@ -53,7 +53,6 @@ public class SignUpController {
         System.out.println("================================");
         Delay.countdelay(5000);
 
-        System.out.println("================================");
         System.out.println("잠시 후에 처음 화면으로 돌아갑니다.");
         System.out.println("================================");
         System.out.println();

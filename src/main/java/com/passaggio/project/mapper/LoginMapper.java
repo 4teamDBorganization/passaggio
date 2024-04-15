@@ -18,4 +18,5 @@ public interface LoginMapper {
 
     SignUpDTO gologin(SignUpDTO signUpDTO);
 
+    int deleteUser(String id);
 }
