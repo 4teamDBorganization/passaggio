@@ -21,26 +21,20 @@ public class Controller {
 
     private int loggedInUserSeq;
 
-    public Controller(){
+    public Controller(int mseq){
         views = new PlaylistViews();
 
         plService = new PlaylistService();
         lcService = new ListContentService();
         siService = new SongInfoService();
 
-        loggedInUserSeq = 1; // 임시
+        loggedInUserSeq = mseq;
     }
 
-    public boolean logIn(Map<String, String> loginInfo){
-
-        loggedInUserSeq = 1;
-        return true;
-    }
-
-    public boolean logOut() {
+    public void logOut() {
 
         loggedInUserSeq = 0;
-        return false;
+        
     }
 
     public void wholeList(){

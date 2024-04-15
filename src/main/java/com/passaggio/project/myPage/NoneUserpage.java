@@ -49,9 +49,9 @@ public class NoneUserpage {
                     System.out.println("뒤로 돌아갑니다");
                     Delay.countdelay(1000);
                 }
-                else if(YandN == 3){
-                    break;
-                }
+            }
+            else if(noneuserchoice == 3){
+                break;
             }
         }while (true);
 

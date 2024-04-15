@@ -10,22 +10,26 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class MypageService {
-        public void showMypage(String userId) {
+        public void showMypage(String mseq, String userId) {
             Scanner sc = new Scanner(System.in);
 
             LoginService loginService = new LoginService();
             String userNickName = loginService.WhatIsNickName(userId);
 
+            int intMseq = Integer.parseInt(mseq);
+
             // 마이페이지 화면
             System.out.println(userId + "님 "+ userNickName +"페이지에 오신 것을 환영합니다!");
 
-            Controller controller = new Controller();
+            Controller controller = new Controller(intMseq);
             int inputInt;
+            boolean flag;
             do {
+                flag = false;
                 inputInt = 0;
 
                 System.out.println("\n=============== 메뉴 관리 ===============");
-                System.out.println("1. 전체 플레이 리스트 조회");
+                System.out.println("1. 전체 플레이리스트 조회");
                 System.out.println("2. 마이페이지");
                 System.out.println("8. 로그아웃");
                 System.out.println("9. 프로그램 종료");
@@ -45,6 +49,9 @@ public class MypageService {
                     case 2:
                         controller.myPage(); break;
                     case 8:
+                        controller.logOut();
+                        System.out.println("로그아웃 되었습니다.");
+                        flag = true;
                         break;
                     case 9:
                         controller.logOut();
@@ -56,27 +63,7 @@ public class MypageService {
                         System.out.println("잘못된 관리 번호입니다.");
                         break;
                 }
-
-//                System.out.println("================================");
-//                System.out.println("1. 전체 플레이리스트 조회");
-//                System.out.println("2. 개인 플레이리스트 조회");
-//                System.out.println("9. 로그아웃");
-//                System.out.println("================================");
-//                Delay.countdelay(1000);
-//
-//                int whatPLchoice = sc.nextInt();
-//                if(whatPLchoice == 1) {
-//
-//                } else if(whatPLchoice == 2) {
-//
-//                } else if (whatPLchoice == 9) {
-//                    System.out.println("================================");
-//                    System.out.println("로그아웃 중입니다. 잠시만 기다려주세요.");
-//                    System.out.println("================================");
-//                    System.out.println();
-//                    break;
-//                }
-            }while(true);
+            }while(!flag);
 
         }
     }

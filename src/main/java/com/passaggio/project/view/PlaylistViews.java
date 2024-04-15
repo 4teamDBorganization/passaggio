@@ -74,7 +74,7 @@ public class PlaylistViews {
 
         do{
             // 플레이리스트가 한 개 이상 존재할 때
-            if(plList != null){
+            if(plList != null && !plList.isEmpty()){
                 flag = false;
 
                 // 사용자 플레이리스트 전체 출력
@@ -717,7 +717,8 @@ public class PlaylistViews {
     // 플레이리스트 목록 출력
     public void printUserPlList(List<PlaylistTO> plList){
         PlaylistTO tmp = null;
-        for(int i = 0; i < plList.size(); i++){
+
+        for (int i = 0; i < plList.size(); i++) {
             tmp = plList.get(i);
             System.out.println("[" + (i + 1) + "] " + tmp.getLname() + (!StringUtil.isBlank(tmp.getExp()) ? " (" + tmp.getExp() + ")" : ""));
         }
