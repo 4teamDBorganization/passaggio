@@ -10,7 +10,7 @@ public interface ListContentMapper {
     List<Integer> selectContentsByLseq(int lseq);
 
     // 노래 있는지 체크
-    int isContentExists(int sseq);
+    int isContentExists(ListContentTO lto);
 
     // 노래 추가
     int insertContent(ListContentTO lto);

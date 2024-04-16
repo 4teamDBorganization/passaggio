@@ -12,13 +12,13 @@
             lseq = #{lseq}
     </select>
 
-    <select id="isContentExists" parameterType="_int" resultType="_int">
+    <select id="isContentExists" parameterType="ListContentTO" resultType="_int">
         SELECT
             COUNT(*)
         FROM
             list_content
         WHERE
-            sseq = #{sseq}
+            lseq = #{lseq} AND sseq = #{sseq}
     </select>
 
     <insert id="insertContent" parameterType="ListContentTO">
