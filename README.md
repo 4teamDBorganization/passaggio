@@ -101,7 +101,7 @@
 - Back-end : IntelliJ IDEA, Java 17, mySQL, MyBatis, ERD Croud, Diagrams Draw_IO
 - 버전 및 이슈관리 : Github, Github Issues, Github Project
 <div align=left><h4>협업 툴</h4></div>
-<div align=left><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"/><a href="https://www.notion.so/e9077bdb30f14515bc1c52f838aa2360?pvs=4"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"/></a><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/></div>
+<div align=left><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"/><a href="https://www.notion.so/c4f2135f392c40158f4c1cc500d9d563?v=b853aa9e72554b9fa9f70dd7315f058e"><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"/></a><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/></div>
 
 <br>
 
@@ -208,7 +208,7 @@
 회원은 다른 회원이 생성한 플레이리스트를 조회할 수 있다.
 
 ##### **플레이리스트에 노래 추가**:
-회원은 플레이리스트에 노래를 추가할 때, 유튜브에서 해당 노래의 정보를 검색하여 검색 결과 창 주소를 따와 저장한다.
+회원은 플레이리스트에 노래를 추가할 때, 유튜브에서 해당 노래의 정보를 검색하여 검색 결과 창 주소를 가져와 저장한다.
 노래를 선택하면 해당 유튜브 링크로 이동하여 노래를 재생할 수 있다.
 
 ##### **플레이리스트에 노래 소개**:
