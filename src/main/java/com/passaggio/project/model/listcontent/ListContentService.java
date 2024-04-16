@@ -22,10 +22,10 @@ public class ListContentService {
         return contents;
     }
 
-    public int isContentExists(int sseq){
+    public int isContentExists(ListContentTO lto){
         SqlSession sqlSession = Template.getSqlSession();
 
-        int result = dao.isContentExists(sqlSession, sseq);
+        int result = dao.isContentExists(sqlSession, lto);
 
         sqlSession.close();
 

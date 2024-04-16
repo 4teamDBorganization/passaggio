@@ -17,10 +17,10 @@ public class ListContentDAO {
     }
 
     // 노래 있는지 확인
-    public int isContentExists(SqlSession sqlSession, int sseq){
+    public int isContentExists(SqlSession sqlSession, ListContentTO lto){
         mapper = sqlSession.getMapper(ListContentMapper.class);
 
-        return mapper.isContentExists(sseq);
+        return mapper.isContentExists(lto);
     }
 
 

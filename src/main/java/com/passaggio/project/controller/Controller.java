@@ -183,7 +183,10 @@ public class Controller {
         }
 
         if(checkInfo != null){
-            if(lcService.isContentExists(checkInfo.getSeq()) > 0) {
+            ListContentTO lto = new ListContentTO();
+            lto.setLseq(lseq);
+            lto.setSseq(checkInfo.getSeq());
+            if(lcService.isContentExists(lto) > 0) {
                 System.out.println("이미 존재하는 노래입니다.");
                 flag = true;
             }
