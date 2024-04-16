@@ -381,7 +381,6 @@ public class PlaylistViews {
 
         String singer = null;
         String title = null;
-        String exp = null;
 
         System.out.println("============ 노래 추가 =============");
         do{
@@ -406,27 +405,8 @@ public class PlaylistViews {
             }
         }while(true);
 
-        do{
-            System.out.print("노래 설명 작성 여부 (Y / N) : ");
-            String input = sc.nextLine().toUpperCase();
-
-            if(input.equals("Y")){
-                System.out.print("노래 설명 : " );
-                exp = sc.nextLine();
-                break;
-
-            }else if(input.equals("N")){
-                break;
-
-            }else{
-                System.out.println("올바른 입력이 아닙니다.");
-
-            }
-        }while(true);
-
         sto.setSinger(singer.strip());
         sto.setTitle(title.strip());
-        sto.setExp( (exp != null && !exp.isBlank()) ? exp.strip() : null );
 
         sto.setLink(crawl(sto.getSinger(), sto.getTitle()));
 
@@ -725,7 +705,7 @@ public class PlaylistViews {
         SongInfoTO tmp = null;
         for(int i = 0; i < infoList.size(); i++){
             tmp = infoList.get(i);
-            System.out.println("[" + (i + 1) + "] " + tmp.getSinger() + " - " + tmp.getTitle() + (!StringUtil.isBlank(tmp.getExp()) ? " (" + tmp.getExp() + ")" : ""));
+            System.out.println("[" + (i + 1) + "] " + tmp.getSinger() + " - " + tmp.getTitle());
         }
 
     }

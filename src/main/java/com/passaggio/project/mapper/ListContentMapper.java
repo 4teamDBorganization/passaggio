@@ -9,6 +9,9 @@ public interface ListContentMapper {
     // 리스트 내부 노래 정보 조회
     List<Integer> selectContentsByLseq(int lseq);
 
+    // 노래 있는지 체크
+    int isContentExists(int sseq);
+
     // 노래 추가
     int insertContent(ListContentTO lto);
 

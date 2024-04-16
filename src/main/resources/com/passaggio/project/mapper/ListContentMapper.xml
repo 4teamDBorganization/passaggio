@@ -12,6 +12,15 @@
             lseq = #{lseq}
     </select>
 
+    <select id="isContentExists" parameterType="_int" resultType="_int">
+        SELECT
+            COUNT(*)
+        FROM
+            list_content
+        WHERE
+            sseq = #{sseq}
+    </select>
+
     <insert id="insertContent" parameterType="ListContentTO">
         INSERT INTO
             list_content (lseq, sseq)

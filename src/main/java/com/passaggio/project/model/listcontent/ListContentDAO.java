@@ -16,6 +16,14 @@ public class ListContentDAO {
         return mapper.selectContentsByLseq(lseq);
     }
 
+    // 노래 있는지 확인
+    public int isContentExists(SqlSession sqlSession, int sseq){
+        mapper = sqlSession.getMapper(ListContentMapper.class);
+
+        return mapper.isContentExists(sseq);
+    }
+
+
     // 노래 추가
     public int insertContent(SqlSession sqlSession, ListContentTO lto){
         mapper = sqlSession.getMapper(ListContentMapper.class);

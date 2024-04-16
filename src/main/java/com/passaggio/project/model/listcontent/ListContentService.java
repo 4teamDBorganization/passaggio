@@ -22,6 +22,16 @@ public class ListContentService {
         return contents;
     }
 
+    public int isContentExists(int sseq){
+        SqlSession sqlSession = Template.getSqlSession();
+
+        int result = dao.isContentExists(sqlSession, sseq);
+
+        sqlSession.close();
+
+        return result;
+    }
+
     public int insertContent(ListContentTO lto){
         SqlSession sqlSession = Template.getSqlSession();
 
