@@ -15,6 +15,5 @@ public class SongInfoTO {
     private String singer;
     private String title;
     private String link;
-    private String exp;
 
 }

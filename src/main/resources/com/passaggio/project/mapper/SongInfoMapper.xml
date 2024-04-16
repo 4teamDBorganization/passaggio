@@ -44,8 +44,8 @@
         keyProperty : 자동 생성 키를 받을 필드(TO의 경우) 혹은 키 이름(Map의 경우) -->
     <insert id="insertSongInfo" parameterType="SongInfoTO" useGeneratedKeys="true" keyProperty="seq">
         INSERT INTO
-            song_info (singer, title, link, exp)
+            song_info (singer, title, link)
         VALUES
-            (#{singer}, #{title}, #{link}, #{exp})
+            (#{singer}, #{title}, #{link})
     </insert>
 </mapper>

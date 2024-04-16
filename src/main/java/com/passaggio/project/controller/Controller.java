@@ -182,6 +182,13 @@ public class Controller {
             sseq = checkInfo.getSeq();
         }
 
+        if(checkInfo != null){
+            if(lcService.isContentExists(checkInfo.getSeq()) > 0) {
+                System.out.println("이미 존재하는 노래입니다.");
+                flag = true;
+            }
+        }
+
         // song_info INSERT 성공 & 이미 존재하는 경우
         // list_content INSERT
         if(!flag){
